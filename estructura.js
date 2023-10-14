@@ -41,7 +41,7 @@ $btnYes.addEventListener("click",()=>{
     let $div=document.createElement("div"),
         $fragment=document.createDocumentFragment();
     $div.innerHTML="<h4>Estaba seguros que dirias que si xd , eres la tuerca que encaja perfectamente en el engranaje de mi vida.</h4>";
-    $div.style.backgroundColor="chocolate";
+    $div.style.backgroundColor="white";
     $fragment.appendChild($div);
     
     document.querySelector(".container").appendChild($fragment);
