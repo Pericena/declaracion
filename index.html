@@ -1,51 +1,69 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Declaracion</title>
-    <link rel="stylesheet" href="estilo.css">
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-</head>
-<body>
-    <!-- <div class="contenedor">
-        <p>¿Quieres ser mi novia?</p>
-       
-        <button id="sibtn">Si</button>
-        <button id="nobnt">No</button>
-    </div> -->
 
-    <div class="container">
-        <h1>¿Quieres ser mi novia? Jimena :D</h1>
-        <!-- <img src="foto.png" alt=""> -->
-        <model-viewer
-        alt="ropa"
-        src="in_love_-_robots.glb" ar ar-modes="webxr scene-viewer quick-look"
-        seamless-poster 
-        shadow-intensity="1" 
-        camera-controls
-        ar
-        ar-modes="webxr quick-look"
-        ar-button
-        ar-placement="floor"
-        progress-bar
-        width=800px
-        hight=800px
-        >
-    </model-viewer>
-        <div class="inputs">
-            <input type="button" value="SI" id="btnYes"  />
-            <input type="button" value="NO" id="btnNo" />
-        </div>
+ <!doctype html>
+ <html class="no-js" lang="en">
+ 
+ <head>
+     <meta charset="utf-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="style.css">
+     <title>vehiculo</title>
+
+     <script src="js/modernizr.js"></script>
+ 
+ 
+ <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+ <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ 
+ <script src="https://unpkg.com/ml5@0.5.0/dist/ml5.min.js"></script>
+ <script src="https://unpkg.com/ml5@0.5.0/dist/ml5.js"></script>
+ 
+ 
+ 
+ <script src ="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script> 
+ <script src ="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
+ 
+ 
+ </head>
+ 
+ <body>
+
+
+  <div class="box-questions">
+    <div class="header">
+      <p> vehiculo</p>
     </div>
-    <audio autoplay>
-        <source src="musicca.mp3" type="audio/mpeg">
-        Tu navegador no admite la reproducción de audio.
-    </audio>
+    <p id="status"></p>
+    <div id="history">
+      <img id='idImage' src='tu_imagen_por_defecto.jpg' alt="Fotografía" style="width: 200px; height: 200px;" align="center">
+      <div id='console'></div>
+      
+     <center><div id="chart_div"></div></center>
 
-    <script src="estructura.js"></script>
-    
-</body>
-</html>
-   
+    </div>
+    <div class="footer">
+      <input type="text" id="message-input" placeholder="Pergunte aqui...">
+      <button class="btn-submit" id="btn-submit" onclick="sendMessage()">Enviar</button>
+      <input type="file" onchange="showFiles(event)" accept=".png, .jpg, .jpeg">
+    </div>
+  </div>
+  
+ 
+
+     <script src="main.js"></script>
+ 
+     <script src="index.js"></script>
+
+ 
+     <script>
+         $(document).foundation();
+     </script>
+
+
+
+
+ </body>
+ 
+ </html>
+ 
