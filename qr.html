@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lector de Código QR</title>
+    <!-- Incluye la biblioteca jsQR desde el CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.0.0/dist/jsQR.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #camera-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #video {
+            width: 100%;
+            max-width: 640px;
+            border: 2px solid #fff;
+            border-radius: 8px;
+        }
+
+        #result-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #result {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Lector de Código QR</h1>
+    
+    <!-- Contenedor para la cámara -->
+    <div id="camera-container">
+        <video id="video" playsinline autoplay></video>
+    </div>
+
+    <!-- Contenedor para mostrar el resultado del código QR -->
+    <div id="result-container">
+        <div id="result">Esperando código QR...</div>
+    </div>
+
+    <!-- Script para leer el código QR desde la cámara -->
+    <script>
+        // Accede a la cámara y comienza a capturar el video
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+            .then(function (stream) {
+                var video = document.getElementById('video');
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function (err) {
+                console.error('Error al acceder a la cámara: ', err);
+            });
+
+        // Escucha los fotogramas del video y busca códigos QR
+        var video = document.getElementById('video');
+        video.addEventListener('loadeddata', function () {
+            var canvas = document.createElement('canvas');
+            var canvasContext = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            setInterval(function () {
+                canvasContext.drawImage(video, 0, 0, canvas.width, canvas.height);
+                var imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+                var code = jsQR(imageData.data, imageData.width, imageData.height);
+
+                if (code) {
+                    // Código QR encontrado, actualiza el resultado
+                    document.getElementById('result').innerText = 'Código QR encontrado: ' + code.data;
+                }
+           

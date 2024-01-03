@@ -1,69 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!--icons script link-->
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
- <!doctype html>
- <html class="no-js" lang="en">
- 
- <head>
-     <meta charset="utf-8" />
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="style.css">
-     <title>vehiculo</title>
+    <!-- Metaetiqueta para el color de tema en dispositivos móviles -->
+<meta name="theme-color" content="rgb(3, 6, 33)">
+<!-- Metaetiquetas para optimización móvil -->
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<!-- Metaetiqueta para habilitar la instalación como una aplicación web en dispositivos móviles -->
+<meta name="mobile-web-app-capable" content="yes">
+<!-- Metaetiqueta para personalizar la barra de estado en dispositivos iOS -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Icono de acceso directo en la barra de tareas y en dispositivos iOS -->
+<link rel="shortcut icon" type="image/png" href="./assets/images/logo/logo.png">
+<link rel="apple-touch-icon" href="./assets/images/logo/logo.png">
 
-     <script src="js/modernizr.js"></script>
- 
- 
- <script src="https://unpkg.com/@tensorflow/tfjs"></script>
- <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
- 
- <script src="https://unpkg.com/ml5@0.5.0/dist/ml5.min.js"></script>
- <script src="https://unpkg.com/ml5@0.5.0/dist/ml5.js"></script>
- 
- 
- 
- <script src ="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script> 
- <script src ="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
- 
- 
- </head>
- 
- <body>
+<!-- Archivo de manifiesto de la aplicación web -->
+<link rel="manifest" href="manifest.json">
 
 
-  <div class="box-questions">
-    <div class="header">
-      <p> vehiculo</p>
-    </div>
-    <p id="status"></p>
-    <div id="history">
-      <img id='idImage' src='tu_imagen_por_defecto.jpg' alt="Fotografía" style="width: 200px; height: 200px;" align="center">
-      <div id='console'></div>
-      
-     <center><div id="chart_div"></div></center>
-
-    </div>
-    <div class="footer">
-      <input type="text" id="message-input" placeholder="Pergunte aqui...">
-      <button class="btn-submit" id="btn-submit" onclick="sendMessage()">Enviar</button>
-      <input type="file" onchange="showFiles(event)" accept=".png, .jpg, .jpeg">
-    </div>
-  </div>
+<!-- Imagen de inicio en dispositivos iOS -->
+<link rel="apple-touch-startup-image" href="./assets/images/logo/logo.png">
+    <!--stylesheet link-->
   
- 
+<link rel="stylesheet" href="./archivo/login/signup.css" />
+    <!--title-->
 
-     <script src="main.js"></script>
- 
-     <script src="index.js"></script>
+  </head>
+  
+  <body>
 
- 
-     <script>
-         $(document).foundation();
-     </script>
+    <!--container start-->
+    <div class="container">
+      <!--form container start-->
+      <div class="forms-container">
+        <div class="signin-signup">
+     
+          <!--Suscribete form start-->
+          <form method="POST" class="sign-in-form" action="hojaruta.html">
+          
+        <h2 class="title">Iniciar Seccion</h2>
+        <!--input for username-->
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input id="email" type="email" name="email" value="admin@gmail.com" required autocomplete="email" autofocus placeholder="email" />
+       
+
+    
+        </div>
+        <!--input for password-->
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input id="password" type="password" name="password" value="admin" required autocomplete="current-password" placeholder="contraseña" />
+
+        </div>
 
 
 
+        <button class="btn" id="sign-in-btn">
+          Iniciar Seccion
+        </button>
 
- </body>
- 
- </html>
- 
+
+        <!--social media icons list end-->
+      </form>
+          <!--Suscribete form end-->
+        </div>
+      </div>
+      <!--form container end-->
+
+      <div class="panels-container">
+        <!--left panel for Iniciar Seccion form start-->
+        <div class="panel left-panel">
+          <div class="content">
+            
+            <h3>extinfuego</h3>
+            <!-- <img src="assets/images/logo/logo.png" alt="" width="200"> -->
+            <p>
+              "Extinguego App: La llave para tu seguridad, el control en tus manos."
+            </p>
+            
+            
+          </div>
+          <!--image tag for svg file-->
+   
+        </div>
+
+        
+        <!--right panel for Suscribete form start-->
+        <div class="panel right-panel">
+          <div class="content">
+         
+           
+         
+            <!--Iniciar Seccion button-->
+            <button class="btn transparent" id="sign-in-btn">
+              Iniciar Seccion
+            </button>
+          </div>
+        </div>
+
+      </div>
+     <!--panel container end-->
+    </div>
+    <!--container end-->
+
+  </body>
+</html>
