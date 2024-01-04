@@ -229,7 +229,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 }
 
 .overlay.active {
-  opacity: 1;
+  /* opacity: 1; */
   pointer-events: all;
 }
 
