@@ -58,9 +58,9 @@ function displayNotification() {
 
 function notification() {
   const options = {
-    body: "Explore, Learn, Travel the Universe!",
-    icon: "./assets/images/logo/logo.png",
-    sound: "./pages/sala/sonido/sonido.mp3"
+    body: "Extinfuego!",
+    icon: "./images/logo/logo.png",
+    sound: "./sonido/sonido.mp3"
   };
-  swRegistration.showNotification("Comet Coders", options);
+  swRegistration.showNotification("Extinfuego", options);
 }

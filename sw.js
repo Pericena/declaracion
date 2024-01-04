@@ -1,7 +1,18 @@
 console.log('Service Worker');
 const CACHE_NAME = 'v1_pwa_app_cache';
 const urlsToCache = [
+  './',
   'index.html',
+  'css/style.css',
+  'css/css.css',
+  'css/slider.css',
+  'js/script.js',
+  'js/slider.js',
+  'js/script_pwa.js',
+  'images/logo/logo.png',
+  'images/.*',
+  'sonido/musica.mp3',
+
 ];
 
 self.addEventListener("install", (e) => {
