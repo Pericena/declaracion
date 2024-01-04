@@ -3,16 +3,15 @@ const CACHE_NAME = 'v1_pwa_app_cache';
 const urlsToCache = [
   './',
   'index.html',
-  'assets/css/style.css',
-  'assets/css/css.css',
-  'assets/css/slider.css',
-  'assets/js/script.js',
-  'assets/js/slider.js',
+  'css/style.css',
+  'css/css.css',
+  'css/slider.css',
+  'js/script.js',
+  'js/slider.js',
   'js/script_pwa.js',
-  'assets/images/logo/logo.png',
-  'assets/images/.*',
-  'assets/sonido/musica.mp3',
-  
+  'images/logo/logo.png',
+  'images/.*',
+  'sonido/musica.mp3',
 
 ];
 

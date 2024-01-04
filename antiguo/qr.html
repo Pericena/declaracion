@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lector y Generador de QR</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="qrcode"></div>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/zxing-js/instascan@2.0.0/dist/instascan.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Generar el código QR
+    var qr = new QRious({
+        element: document.getElementById('qrcode'),
+        value: 'https://www.ejemplo.com' // Puedes cambiar esto con tu propio enlace
+    });
+
+    // Inicializar el lector de códigos QR
+    let scanner = new Instascan.Scanner({ video: document.getElementById('qrcode') });
+
+    // Manejar la detección del código QR
+    scanner.addListener('scan', function (content) {
+        alert('Código QR detectado: ' + content);
+    });
+
+    // Iniciar la cámara
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('No se encontraron cámaras en el dispositivo.');
+        }
+    }).catch(function (e) {
+        console.error(e);
+    });
+});
+
+</script>

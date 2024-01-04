@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>extinfuego</title>
+
+<!--
+	- favicon
+-->
+<link rel="shortcut icon" href="./images/logo/logo.png" type="image/x-icon">
+
+<!--
+	- custom css link
+-->
+<link rel="stylesheet" href="./css/style-prefix.css">
+
+<!--
+	- google font link
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+	rel="stylesheet">
+
+
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+	<!-- Metaetiqueta para el color de tema en dispositivos móviles -->
+<meta name="theme-color" content="rgb(3, 6, 33)">
+<!-- Metaetiquetas para optimización móvil -->
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<!-- Metaetiqueta para habilitar la instalación como una aplicación web en dispositivos móviles -->
+<meta name="mobile-web-app-capable" content="yes">
+<!-- Metaetiqueta para personalizar la barra de estado en dispositivos iOS -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Icono de acceso directo en la barra de tareas y en dispositivos iOS -->
+<link rel="shortcut icon" type="image/png" href="./images/logo/logo.png">
+<link rel="apple-touch-icon" href="./images/logo/logo.png">
+
+<!-- Archivo de manifiesto de la aplicación web -->
+<link rel="manifest" href="manifest.json">
+
+
+<!-- Imagen de inicio en dispositivos iOS -->
+<link rel="apple-touch-startup-image" href="./images/logo/logo.png">
+<!--stylesheet link-->
+	
+</head>
+
+<body>
+
+
+<div class="overlay" data-overlay></div>
+
+<!--
+	- MODAL
+-->
+
+<div class="modal" data-modal>
+
+	<div class="modal-close-overlay" data-modal-overlay></div>
+
+	<div class="modal-content">
+
+	<button class="modal-close-btn" data-modal-close>
+		<ion-icon name="close-outline"></ion-icon>
+		
+	</button>
+	</div>
+
+</div>
+
+
+
+
+<!--
+	- NOTIFICATION TOAST
+-->
+
+<div class="notification-toast" data-toast>
+
+	<button class="toast-close-btn" data-toast-close>
+	<ion-icon name="close-outline"></ion-icon>
+	</button>
+
+	<div class="toast-banner">
+	<img src="./images/products/tigo.png" alt="Tigo" width="80" height="70">
+	</div>
+
+	<div class="toast-detail">
+
+	<p class="toast-message" id="resultado">
+		Aquí aparecerá el código
+		
+	</p>
+	
+	<p class="toast-title">
+		A continuación, el contenedor:
+	</p>
+
+	<p class="toast-meta">
+		<time datetime="PT2M">2 Minutes</time> ago
+	</p>
+	</div>
+</div>
+
+
+
+
+
+<!--
+	- HEADER
+-->
+
+<header>
+
+
+
+	<div class="header-main">
+
+	<div class="container">
+
+		<a href="#" class="header-logo">
+		<img src="./images/logo/logo.png" alt="Anon's logo" width="120" height="50">
+		</a>
+
+		<div class="header-search-container">
+
+		<input type="search" name="search" class="search-field" placeholder="Buscar...">
+
+		<button class="search-btn">
+			<i class='bx bx-search-alt-2' ></i>
+			<!-- <ion-icon name="search-outline"></ion-icon> -->
+		</button>
+
+		</div>
+
+		<div class="header-user-actions">
+
+		<button class="action-btn">
+			<i class='bx bx-menu' ></i>
+			
+			<!-- <ion-icon name="person-outline"></ion-icon> -->
+		</button>
+
+		<button class="action-btn">
+			<!-- <ion-icon name="heart-outline"></ion-icon> -->
+			<i class='bx bx-bell' ></i>
+			<span class="count">0</span>
+		</button>
+
+		<button class="action-btn">
+			<i class='bx bx-comment-dots' ></i>
+			<!-- <ion-icon name="bag-handle-outline"></ion-icon> -->
+			<span class="count">0</span>
+		</button>
+
+		<button class="action-btn">
+			<i class='bx bx-dots-vertical-rounded' ></i>
+			<!-- <ion-icon name="bag-handle-outline"></ion-icon> -->
+	
+		</button>
+		</div>
+	</div>
+
+	</div>
+
+
+
+	<div class="mobile-bottom-navigation">
+
+	<button class="action-btn" data-mobile-menu-open-btn>
+		<i class='bx bx-menu' ></i>
+	</button>
+
+	<button class="action-btn">
+		<!-- <ion-icon name="bag-handle-outline"></ion-icon> -->
+		<!-- <i class='bx bx-camera' ></i> -->
+		<i class='bx bx-comment-dots' ></i>
+		<span class="count">0</span>
+		
+	</button>
+
+	<button class="action-btn">
+		<!-- <ion-icon name="home-outline"></ion-icon> -->
+		<i class='bx bx-grid-alt'></i>
+	</button>
+
+	<button class="action-btn">
+		<!-- <ion-icon name="heart-outline"></ion-icon> -->
+		<i class='bx bx-bell' ></i>
+		<span class="count">0</span>
+	</button>
+
+	<a href="barra.html" class="action-btn" data-mobile-menu-open-btn>
+		<!-- <ion-icon name="grid-outline"></ion-icon> -->
+		<i class='bx bx-camera' ></i> 
+		<!-- <i class='bx bx-qr' ></i> -->
+	</a>
+	</div>
+
+</header>
+
+
+
+
+
+<!--
+	- MAIN
+-->
+
+<main>
+
+	<div class="product-minimal">
+
+		<div class="product-showcase">
+
+		<h2 class="title">QR</h2>
+
+		<div class="showcase-wrapper has-scrollbar">
+
+			<div class="showcase-container">
+
+			
+
+				<a href="ruta.html">
+					<h4 class="showcase-title" id="resultado2">Aquí aparecerá el código</h4>
+				</a>
+				<a href="#" class="showcase-category">
+					<p>A continuación, el contenedor: </p>
+				
+				</a>
+
+
+			<div class="showcase">
+
+		
+				<div id="contenedor"></div>
+
+				
+
+			
+				</div>
+
+			</div>
+
+		</div>
+
+		</div>
+
+	 
+
+</div>
+
+</div>
+
+
+
+	<!--
+	- PRODUCT
+	-->
+</main>
+
+
+<!--
+	- FOOTER
+-->
+
+<footer>
+
+	<div class="footer-bottom">
+	<div class="container">
+		<p class="copyright">
+		Copyright &copy; <a href="#">Agora</a> Soluciones v.1.
+		</p>
+	</div>
+
+	</div>
+
+</footer>
+
+
+
+
+<!--
+	- custom js link
+-->
+<script src="https://unpkg.com/quagga@0.12.1/dist/quagga.min.js"></script>
+<script src="./js/script.js"></script>
+
+</body>
+
+</html>
+
+
+<!-- Cargamos Quagga y luego nuestro script -->
+<script src="https://unpkg.com/quagga@0.12.1/dist/quagga.min.js"></script>
+<script src="script.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+	const $resultados = document.querySelector("#resultado");
+	const $resultados2 = document.querySelector("#resultado2");
+	Quagga.init({
+		inputStream: {
+			constraints: {
+				width: 1920,
+				height: 1080,
+			},
+			name: "Live",
+			type: "LiveStream",
+			target: document.querySelector('#contenedor'), // Pasar el elemento del DOM
+		},
+		decoder: {
+			readers: ["ean_reader"]
+		}
+	}, function (err) {
+		if (err) {
+			console.log(err);
+			return
+		}
+		console.log("Iniciado correctamente");
+		Quagga.start();
+	});
+
+	Quagga.onDetected((data) => {
+		$resultados.textContent = data.codeResult.code;
+		$resultados2.textContent = data.codeResult.code;
+		// Imprimimos todo el data para que puedas depurar
+		console.log(data);
+	});
+});
+</script>
+
+
+<style>
+    #contenedor video{
+	max-width: 100%;
+	width: 100%;
+}
+#contenedor{
+	max-width: 100%;
+	position:relative;
+}
+canvas{
+	max-width: 100%;
+}
+canvas.drawingBuffer{
+	position:absolute;
+	top:0;
+	left:0;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
