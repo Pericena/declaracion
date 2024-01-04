@@ -238,7 +238,7 @@
 			
 
 				<a href="ruta.html">
-					<h4 class="showcase-title" id="resultado">Aquí aparecerá el código</h4>
+					<h4 class="showcase-title" id="resultado2">Aquí aparecerá el código</h4>
 				</a>
 				<a href="#" class="showcase-category">
 					<p>A continuación, el contenedor: </p>
@@ -336,6 +336,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 	const $resultados = document.querySelector("#resultado");
+	const $resultados2 = document.querySelector("#resultado2");
 	Quagga.init({
 		inputStream: {
 			constraints: {
@@ -360,6 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	Quagga.onDetected((data) => {
 		$resultados.textContent = data.codeResult.code;
+		$resultados2.textContent = data.codeResult.code;
 		// Imprimimos todo el data para que puedas depurar
 		console.log(data);
 	});
