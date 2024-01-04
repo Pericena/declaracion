@@ -46,7 +46,7 @@
   <!-- 
     - custom css link
   -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./css/style-prefix.css">
 
   <!-- 
     - google font link
@@ -79,69 +79,14 @@
 
   <header class="header" data-header>
     <div class="container">
-
-      <button class="nav-toggle-btn" aria-label="toggle manu" data-nav-toggler>
-        <ion-icon name="menu-outline" aria-hidden="true" class="menu-icon"></ion-icon>
-        <ion-icon name="close-outline" aria-label="true" class="close-icon"></ion-icon>
-      </button>
-
-      <!-- <a href="#" class="logo">C-coders</a> -->
-      <img src="assets/images/logo/CosmicVR-AI-App-2.png" alt="" width="80" height="80">
-
-      <nav class="navbar" data-navbar>
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <a href="https://pericena.github.io/CosmicVR-App/public/" class="navbar-link" data-nav-link><i class='bx bx-home-alt-2'></i>Home</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#shop" class="navbar-link" data-nav-link><i class='bx bxs-rocket'></i>Collection</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#" class="navbar-link" data-nav-link><i class='bx bxs-planet'></i>category</a>
-          </li>
-
-
-
-          <!-- <li class="navbar-item">
-            <a href="#" class="navbar-link" data-nav-link>Blogs</a>
-          </li> -->
-
-          <li class="navbar-item">
-            <a href="#" class="navbar-link" data-nav-link><i class='bx bxs-message-dots'></i>Chat</a>
-          </li>
-
-        </ul>
-
-        <a href="" class="navbar-action-btn">Login</a>
-      </nav>
-
       <div class="header-actions">
-
-        <button class="action-btn" aria-label="Search">
-          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-        </button>
-
-        <button class="action-btn user" aria-label="User">
-          <!-- <ion-icon name="person-outline" aria-hidden="true"></ion-icon> -->
-          <i class='bx bxs-user' aria-hidden="true"></i>
-        </button>
-
         <button class="action-btn" aria-label="cart" id="enableNotifications">
           <!-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> -->
           <i class='bx bxs-bell' aria-hidden="true" ></i>
-          <span class="btn-badge" style="background-color: red;">5</span>
+          <span class="btn-badge" style="background-color: red;">0</span>
         </button>
-
-
       </div>
-
     </div>
-
-
-    
   </header>
 
 
@@ -181,6 +126,11 @@
               <span class="count">0</span>
           </button>
 
+          <button class="action-btn" aria-label="cart" id="enableNotifications">
+            <!-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> -->
+            <i class='bx bxs-bell' aria-hidden="true" ></i>
+            <span class="btn-badge" style="background-color: red;">0</span>
+          </button>
    
 
 
@@ -257,6 +207,12 @@
           <!-- <ion-icon name="heart-outline"></ion-icon> -->
           <i class='bx bx-bell' ></i>
           <span class="count">0</span>
+      </button>
+
+      <button class="action-btn" aria-label="cart" id="enableNotifications">
+        <!-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> -->
+        <i class='bx bxs-bell' aria-hidden="true" ></i>
+        <span class="btn-badge" style="background-color: red;">0</span>
       </button>
 
       <a href="barra.html" class="action-btn" data-mobile-menu-open-btn>
