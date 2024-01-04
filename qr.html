@@ -1,634 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Leer código de barras con JavaScript by parzibyte</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+		<p id="resultado">Aquí aparecerá el código</p>
+		<p>A continuación, el contenedor: </p>
+		<div id="contenedor"></div>
+		<!-- Cargamos Quagga y luego nuestro script -->
+		<script src="https://unpkg.com/quagga@0.12.1/dist/quagga.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+<!-- Cargamos Quagga y luego nuestro script -->
+<script src="https://unpkg.com/quagga@0.12.1/dist/quagga.min.js"></script>
+<script src="script.js"></script>
 
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>extinfuego</title>
-
-<!--
-    - favicon
--->
-<link rel="shortcut icon" href="./assets/images/logo/logo.png" type="image/x-icon">
-
-<!--
-    - custom css link
--->
-<link rel="stylesheet" href="./assets/css/style-prefix.css">
-
-<!--
-    - google font link
--->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-
-    <!-- Metaetiqueta para el color de tema en dispositivos móviles -->
-<meta name="theme-color" content="rgb(3, 6, 33)">
-<!-- Metaetiquetas para optimización móvil -->
-<meta name="MobileOptimized" content="width">
-<meta name="HandheldFriendly" content="true">
-<!-- Metaetiqueta para habilitar la instalación como una aplicación web en dispositivos móviles -->
-<meta name="mobile-web-app-capable" content="yes">
-<!-- Metaetiqueta para personalizar la barra de estado en dispositivos iOS -->
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<!-- Icono de acceso directo en la barra de tareas y en dispositivos iOS -->
-<link rel="shortcut icon" type="image/png" href="./assets/images/logo/logo.png">
-<link rel="apple-touch-icon" href="./assets/images/logo/logo.png">
-
-<!-- Archivo de manifiesto de la aplicación web -->
-<link rel="manifest" href="manifest.json">
-
-
-<!-- Imagen de inicio en dispositivos iOS -->
-<link rel="apple-touch-startup-image" href="./assets/images/logo/logo.png">
-<!--stylesheet link-->
-    
-</head>
-
-<body>
-
-
-<div class="overlay" data-overlay></div>
-
-<!--
-    - MODAL
--->
-
-<div class="modal" data-modal>
-
-    <div class="modal-close-overlay" data-modal-overlay></div>
-
-    <div class="modal-content">
-
-    <button class="modal-close-btn" data-modal-close>
-        <ion-icon name="close-outline"></ion-icon>
-    </button>
-    </div>
-
-</div>
-
-
-
-
-
-<!--
-    - NOTIFICATION TOAST
--->
-
-<div class="notification-toast" data-toast>
-
-    <button class="toast-close-btn" data-toast-close>
-    <ion-icon name="close-outline"></ion-icon>
-    </button>
-
-    <div class="toast-banner">
-    <img src="./assets/images/products/tigo.png" alt="Tigo" width="80" height="70">
-    </div>
-
-    <div class="toast-detail">
-
-    <p class="toast-message">
-        Someone in new just bought
-    </p>
-
-    <p class="toast-title">
-        TIGO DATA CENTER KM9
-    </p>
-
-    <p class="toast-meta">
-        <time datetime="PT2M">2 Minutes</time> ago
-    </p>
-
-    </div>
-
-</div>
-
-
-
-
-
-<!--
-    - HEADER
--->
-
-<header>
-
-
-
-    <div class="header-main">
-
-    <div class="container">
-
-        <a href="#" class="header-logo">
-        <img src="./assets/images/logo/logo.png" alt="Anon's logo" width="120" height="50">
-        </a>
-
-        <div class="header-search-container">
-
-        <input type="search" name="search" class="search-field" placeholder="Buscar...">
-
-        <button class="search-btn">
-            <ion-icon name="search-outline"></ion-icon>
-        </button>
-
-        </div>
-
-        <div class="header-user-actions">
-
-        <button class="action-btn">
-            <ion-icon name="person-outline"></ion-icon>
-        </button>
-
-        <button class="action-btn">
-            <ion-icon name="heart-outline"></ion-icon>
-            <span class="count">0</span>
-        </button>
-
-        <button class="action-btn">
-            <ion-icon name="bag-handle-outline"></ion-icon>
-            <span class="count">0</span>
-        </button>
-
-        </div>
-
-    </div>
-
-    </div>
-
-    <nav class="desktop-navigation-menu">
-
-    <div class="container">
-
-        <ul class="desktop-menu-category-list">
-
-        <li class="menu-category">
-            <a href="#" class="menu-title">Inicia</a>
-        </li>
-
-
-
-        <li class="menu-category">
-            <a href="#" class="menu-title">Ruta</a>
-        </li>
-
-        <li class="menu-category">
-            <a href="#" class="menu-title">Laboratorio</a>
-        </li>
-
-        </ul>
-
-    </div>
-
-    </nav>
-
-    <div class="mobile-bottom-navigation">
-
-    <button class="action-btn" data-mobile-menu-open-btn>
-        <ion-icon name="menu-outline"></ion-icon>
-    </button>
-
-    <button class="action-btn">
-        <ion-icon name="bag-handle-outline"></ion-icon>
-
-        <span class="count">0</span>
-    </button>
-
-    <button class="action-btn">
-        <ion-icon name="home-outline"></ion-icon>
-    </button>
-
-    <button class="action-btn">
-        <ion-icon name="heart-outline"></ion-icon>
-
-        <span class="count">0</span>
-    </button>
-
-    <button class="action-btn" data-mobile-menu-open-btn>
-        <ion-icon name="grid-outline"></ion-icon>
-    </button>
-
-    </div>
-
-    <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
-
-    <div class="menu-top">
-        <h2 class="menu-title">Menu</h2>
-
-        <button class="menu-close-btn" data-mobile-menu-close-btn>
-        <ion-icon name="close-outline"></ion-icon>
-        </button>
-    </div>
-
-    <ul class="mobile-menu-category-list">
-
-        <li class="menu-category">
-        <a href="#" class="menu-title">Inicio</a>
-        </li>
-
-        <li class="menu-category">
-
-        <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Hoja de Ruta</p>
-
-            <div>
-            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-        </button>
-
-        <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-            <a href="#" class="submenu-title">Test 1</a>
-            </li>
-
-            <li class="submenu-category">
-            <a href="#" class="submenu-title">Test 2</a>
-            </li>
-
-            <li class="submenu-category">
-            <a href="#" class="submenu-title">Test 3</a>
-            </li>
-
-            <li class="submenu-category">
-            <a href="#" class="submenu-title">Test 4</a>
-            </li>
-
-        </ul>
-
-        </li>
-
-       
-
-        <li class="menu-category">
-
-        <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Reporte</p>
-
-            <div>
-            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-        </button>
-
-        <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-            <a href="#" class="submenu-title">Test 1</a>
-            </li>
-
-            <li class="submenu-category">
-            <a href="#" class="submenu-title">Test 2</a>
-            </li>
-
-            <li class="submenu-category">
-            <a href="#" class="submenu-title">Test 3</a>
-            </li>
-
-            <li class="submenu-category">
-            <a href="#" class="submenu-title">Test 4</a>
-            </li>
-
-        </ul>
-
-        </li>
-
-    </ul>
-
-
-
-    </nav>
-
-</header>
-
-
-
-
-
-<!--
-    - MAIN
--->
-
-<main>
-
-
-
-
-
-
-
-
-
-    <!--
-    - PRODUCT
-    -->
-
-    <div class="product-container">
-
-    <div class="container">
-
-
-        <!--
-        - SIDEBAR
-        -->
-
-        <div class="sidebar  has-scrollbar" data-mobile-menu>
-
-        <div class="sidebar-category">
-
-            <div class="sidebar-top">
-            <h2 class="sidebar-title">Category</h2>
-
-            <button class="sidebar-close-btn" data-mobile-menu-close-btn>
-                <ion-icon name="close-outline"></ion-icon>
-            </button>
-            </div>
-
-            <ul class="sidebar-menu-category-list">
-
-            <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                <div class="menu-title-flex">
-                    <img src="./assets/images/icons/extintor.png" alt="Hoja de Ruta" width="20" height="20"
-                    class="menu-title-img">
-
-                    <p class="menu-title">Hoja de Ruta</p>
-                </div>
-
-                <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                    <p class="product-name">Test 1</p>
-                    <data value="300" class="stock" title="Available Stock">300</data>
-                    </a>
-                </li>
-
-                <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                    <p class="product-name">Test 2</p>
-                    <data value="60" class="stock" title="Available Stock">60</data>
-                    </a>
-                </li>
-
-                <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                    <p class="product-name">Test 3</p>
-                    <data value="50" class="stock" title="Available Stock">50</data>
-                    </a>
-                </li>
-
-                <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                    <p class="product-name">Test 4</p>
-                    <data value="87" class="stock" title="Available Stock">87</data>
-                    </a>
-                </li>
-
-                </ul>
-
-            </li>
-
-            <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                <div class="menu-title-flex">
-                    <img src="./assets/images/icons/extintor.png" alt="Hoja de Ruta" width="20" height="20"
-                    class="menu-title-img">
-
-                    <p class="menu-title">Hoja de Ruta</p>
-                </div>
-
-                <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                    <p class="product-name">Test 1</p>
-                    <data value="300" class="stock" title="Available Stock">300</data>
-                    </a>
-                </li>
-
-                <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                    <p class="product-name">Test 2</p>
-                    <data value="60" class="stock" title="Available Stock">60</data>
-                    </a>
-                </li>
-
-                <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                    <p class="product-name">Test 3</p>
-                    <data value="50" class="stock" title="Available Stock">50</data>
-                    </a>
-                </li>
-
-                <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                    <p class="product-name">Test 4</p>
-                    <data value="87" class="stock" title="Available Stock">87</data>
-                    </a>
-                </li>
-
-                </ul>
-
-            </li>   
-
-            </ul>
-
-        </div>
-
-
-        </div>
-
-
-
-        <div class="product-box">
-
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    margin: 0;
-                    padding: 0;
-                }
-        
-                #camera-container {
-                    width: 100%;
-                    text-align: center;
-                    margin-top: 20px;
-                }
-        
-                #video {
-                    width: 100%;
-                    max-width: 640px;
-                    border: 2px solid #fff;
-                    border-radius: 8px;
-                }
-        
-                #result-container {
-                    margin-top: 20px;
-                    text-align: center;
-                }
-        
-                #result {
-                    font-size: 18px;
-                    font-weight: bold;
-                    color: #333;
-                }
-        
-                #toggle-camera {
-                    display: block;
-                    margin: 10px auto;
-                    padding: 10px;
-                    background-color: #007bff;
-                    color: #fff;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }
-            </style>
-
-<h1 style="text-align: center;">Lector de Código QR</h1>
-    
-<!-- Contenedor para la cámara -->
-<div id="camera-container">
-    <video id="video" playsinline autoplay></video>
-</div>
-
-<!-- Contenedor para mostrar el resultado del código QR -->
-<div id="result-container">
-    <div id="result">Esperando código QR...</div>
-</div>
-
-<!-- Botón para alternar entre las cámaras frontal y trasera -->
-<button id="toggle-camera">Cambiar Cámara</button>
-
-<!-- Script para leer el código QR desde la cámara -->
 <script>
-    let currentCamera = 'environment'; // 'user' para cámara frontal, 'environment' para cámara trasera
 
-    // Función para alternar entre cámaras frontal y trasera
-    document.getElementById('toggle-camera').addEventListener('click', function () {
-        currentCamera = currentCamera === 'user' ? 'environment' : 'user';
-        reiniciarCamara();
-    });
+document.addEventListener("DOMContentLoaded", () => {
+	const $resultados = document.querySelector("#resultado");
+	Quagga.init({
+		inputStream: {
+			constraints: {
+				width: 1920,
+				height: 1080,
+			},
+			name: "Live",
+			type: "LiveStream",
+			target: document.querySelector('#contenedor'), // Pasar el elemento del DOM
+		},
+		decoder: {
+			readers: ["ean_reader"]
+		}
+	}, function (err) {
+		if (err) {
+			console.log(err);
+			return
+		}
+		console.log("Iniciado correctamente");
+		Quagga.start();
+	});
 
-    // Función para acceder a la cámara y comenzar a capturar el video
-    function iniciarCamara() {
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: currentCamera } } })
-            .then(function (stream) {
-                var video = document.getElementById('video');
-                video.srcObject = stream;
-                video.play();
-            })
-            .catch(function (err) {
-                console.error('Error al acceder a la cámara: ', err);
-            });
-    }
-
-    // Función para reiniciar la cámara cuando se cambia entre frontal y trasera
-    function reiniciarCamara() {
-        var video = document.getElementById('video');
-        var stream = video.srcObject;
-        var tracks = stream.getTracks();
-
-        tracks.forEach(function (track) {
-            track.stop();
-        });
-
-        iniciarCamara();
-    }
-
-    // Escucha los fotogramas del video y busca códigos QR
-    var video = document.getElementById('video');
-    video.addEventListener('loadeddata', function () {
-        var canvas = document.createElement('canvas');
-        var canvasContext = canvas.getContext('2d');
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-
-        setInterval(function () {
-            canvasContext.drawImage(video, 0, 0, canvas.width, canvas.height);
-            var imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
-            var code = jsQR(imageData.data, imageData.width, imageData.height);
-
-            if (code) {
-                // Código QR encontrado, actualiza el resultado
-                document.getElementById('result').innerText = 'Código QR encontrado: ' + code.data;
-            }
-        }, 1000); // Controla la frecuencia de búsqueda (en milisegundos)
-    });
-
-    // Iniciar la cámara cuando se carga la página
-    window.onload = iniciarCamara;
+	Quagga.onDetected((data) => {
+		$resultados.textContent = data.codeResult.code;
+		// Imprimimos todo el data para que puedas depurar
+		console.log(data);
+	});
+});
 </script>
 
 
-        <div class="product-minimal">
-
-
-    </div>
-
-
-   
-
-
-</main>
-
-<!--
-    - FOOTER
--->
-
-<footer>
-
-    <div class="footer-bottom">
-    <div class="container">
-        <p class="copyright">
-        Copyright &copy; <a href="#">Agora</a> Soluciones v.1.
-        </p>
-    </div>
-
-    </div>
-
-</footer>
-
-
-
-
-
-
-<!--
-    - custom js link
--->
-<script src="./assets/js/script.js"></script>
-
-<!--
-    - ionicon link
--->
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-</body>
-
-</html>
+<style>
+    #contenedor video{
+	max-width: 100%;
+	width: 100%;
+}
+#contenedor{
+	max-width: 100%;
+	position:relative;
+}
+canvas{
+	max-width: 100%;
+}
+canvas.drawingBuffer{
+	position:absolute;
+	top:0;
+	left:0;
+}
+</style>
