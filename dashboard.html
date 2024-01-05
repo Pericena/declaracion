@@ -1,0 +1,229 @@
+<!-- Metaetiqueta para el color de tema en dispositivos móviles -->
+<meta name="theme-color" content="rgb(3, 6, 33)">
+<!-- Metaetiquetas para optimización móvil -->
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+
+<!-- Metaetiqueta para habilitar la instalación como una aplicación web en dispositivos móviles -->
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Metaetiqueta para personalizar la barra de estado en dispositivos iOS -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Icono de acceso directo en la barra de tareas y en dispositivos iOS -->
+<link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo.png') }}">
+<link rel="apple-touch-icon" href="{{ asset('assets/images/logo.png') }}">
+
+<!-- Archivo de manifiesto de la aplicación web -->
+<link rel="manifest" href="{{ asset('manifest.json') }}">
+
+
+<!-- Imagen de inicio en dispositivos iOS -->
+<link rel="apple-touch-startup-image" href="assets/images/logo.png">
+
+
+
+<head>
+      <!-- Cargar el CSS de Bootstrap-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js"></script> -->
+  <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <!-- <script src="qrcode.min.js"></script> -->
+
+    <style>
+
+
+/* Estilo para la sección del mapa */
+#map-container {
+    padding: 20px 0;
+}
+
+/* Estilo para el contenedor del mapa */
+#map {
+    height: 400px;
+    width: 100%;
+    border: 1px solid rgba(255, 30, 0, 0.947);
+    margin: 20px 0;
+    padding-bottom: 8.25%; /* Proporción 16:9 para mantener el aspect ratio */
+    position: relative; /* Establecer posición relativa */
+}
+
+/* Establecer altura y anchura para el mapa en posición absoluta */
+#map iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Estilo para el mensaje de alerta */
+.alert {
+    background-color: rgba(255, 30, 0, 0.947);
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    font-family: Arial, sans-serif;
+}
+
+
+
+
+
+/* Estilos para hacerlo adaptable al móvil */
+@media only screen and (max-width: 768px) {
+  #container {
+    padding: 10px;
+  }
+}
+ 
+
+#input-dato:focus {
+  outline: none;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+  #input-dato {
+    font-size: 16px; /* Reduce el tamaño de la fuente para dispositivos móviles */
+    padding: 8px; /* Reduce el padding para dispositivos móviles */
+  }
+}
+
+@media (max-width: 400px) {
+  #input-dato {
+    font-size: 16px; /* Reduce el tamaño de la fuente para dispositivos móviles */
+    padding: 8px; /* Reduce el padding para dispositivos móviles */
+  }
+}
+
+
+    </style>
+
+ 
+    <main>
+        <section id="map-container">
+            <div id="map"></div>
+        </section>
+
+    </main>
+
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+</tr>
+
+<script>
+           let map;
+        const extintorMarkers = [];
+        let inspectorMarker;
+        let rutaPolyline;
+
+        function initMap() {
+            const santaCruzCoords = { lat: -17.783, lng: -63.1821 };
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: santaCruzCoords,
+                mapTypeControl: false,
+                zoomControl: false,
+                streetViewControl: false,
+            });
+
+            const extintorIcon = {
+                url: "images/extintor.png", // Reemplaza con la ruta a tu icono de extintor
+                scaledSize: new google.maps.Size(40, 40),
+            };
+
+            const inspectorIcon = {
+                url: "images/marcador.png", // Reemplaza con la ruta a tu icono de inspector
+                scaledSize: new google.maps.Size(40, 40),
+            };
+
+            // Datos de extintores en Santa Cruz
+            const extintoresData = [
+                { lat: -17.7800, lng: -63.1800, nombre: 'Extintor 1', detalles: 'Ubicación: Sala de reuniones, Piso 1' },
+                { lat: -19.7810, lng: -63.1810, nombre: 'Extintor 2', detalles: 'Ubicación: Pasillo principal, Piso 2' },
+                { lat: -11.7810, lng: -63.1810, nombre: 'Extintor 3', detalles: 'Ubicación: Pasillo principal, Piso 2' },
+                { lat: -13.7810, lng: -63.1810, nombre: 'Extintor 4', detalles: 'Ubicación: Pasillo principal, Piso 2' },
+                { lat: -14.7810, lng: -63.1810, nombre: 'Extintor 5', detalles: 'Ubicación: Pasillo principal, Piso 2' },
+                { lat: -16.7810, lng: -63.1810, nombre: 'Extintor 6', detalles: 'Ubicación: Pasillo principal, Piso 2' },
+                // Agregar más datos de extintores según sea necesario
+            ];
+
+            extintoresData.forEach(extintor => {
+                const marker = agregarMarcador(extintor, extintor.nombre, extintorIcon);
+
+                marker.addListener('click', function () {
+                    mostrarDetalles(extintor.nombre, extintor.detalles);
+                });
+            });
+
+            // Ubicación del inspector
+            const inspectorCoords = { lat: -17.681, lng: -63.1825 };
+            inspectorMarker = agregarMarcador(inspectorCoords, 'Inspector', inspectorIcon);
+
+            inspectorMarker.addListener('click', function () {
+                mostrarDetalles('Inspector', 'Ubicación del inspector');
+            });
+
+            // Ruta de inspección
+            rutaPolyline = new google.maps.Polyline({
+                map: map,
+                strokeColor: '#0000FF',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+            });
+
+            const rutaCoords = [
+                inspectorCoords,
+                { lat: -17.7800, lng: -63.1800 }, // Coordenadas de la primera empresa
+            ];
+
+            rutaPolyline.setPath(rutaCoords);
+        }
+
+        function agregarMarcador(coordenadas, nombre, icono) {
+            const marker = new google.maps.Marker({
+                position: coordenadas,
+                map: map,
+                title: nombre,
+                icon: icono,
+            });
+
+            extintorMarkers.push(marker);
+
+            return marker;
+        }
+
+        function mostrarDetalles(nombre, detalles) {
+            const infowindow = new google.maps.InfoWindow({
+                content: `<strong>${nombre}</strong><br>${detalles}`,
+            });
+
+            const center = map.getCenter();
+
+            infowindow.setPosition(center);
+            infowindow.open(map);
+        }
+</script>
+<!-- Incluye la API de Google Maps con tu clave de API -->
+<script
+src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyDoXPpQqlLk-R1-HEi-PpFLkSUoEhzGDY4&v=weekly&region=GB&callback=initMap&v=weekly&channel=2"
+async></script>
+
+
+
+
+
+
+

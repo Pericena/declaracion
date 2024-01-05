@@ -83,14 +83,14 @@
   <header class="header" data-header>
     <div class="container">
       <div class="header-actions">
-        <a href="mapa.html" class="action-btn" aria-label="cart" id="enableNotifications">
+        <button class="action-btn" aria-label="cart" id="enableNotifications">
           <!-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> -->
           <!-- <i class='bx bxs-bell' aria-hidden="true" ></i>
           <span class="btn-badge" style="background-color: red;">0</span> -->
 
           <i class='bx bx-bell' aria-hidden="true" ></i>
           <span class="count">0</span>
-          </a>
+        </button>
       </div>
     </div>
   </header>
@@ -133,11 +133,11 @@
 
 
 
-          <a href="mapa.html" class="action-btn">
+          <button class="action-btn">
               <i class='bx bx-comment-dots' ></i>
               <!-- <ion-icon name="bag-handle-outline"></ion-icon> -->
               <span class="count">0</span>
-          </a>
+          </button>
 
           <button class="action-btn">
               <i class='bx bx-dots-vertical-rounded' ></i>
@@ -188,13 +188,13 @@
           <i class='bx bx-menu' ></i>
       </button>
 
-      <a href="mapa.html" class="action-btn">
+      <button class="action-btn">
           <!-- <ion-icon name="bag-handle-outline"></ion-icon> -->
           <!-- <i class='bx bx-camera' ></i> -->
           <i class='bx bx-comment-dots' ></i>
           <span class="count">0</span>
           
-      </a>
+      </button>
 
       <button class="action-btn">
           <!-- <ion-icon name="home-outline"></ion-icon> -->
@@ -480,137 +480,201 @@
 
 
 
-          <div class="product-box">
 
-          <!--
-              - PRODUCT MINIMAL
-          -->
 
-          <div class="product-minimal">
 
-              <div class="product-showcase">
 
-              <h2 class="title">Cliente</h2>
+    <style>
 
-              <div class="showcase-wrapper has-scrollbar">
 
-                  <div class="showcase-container">
+/* Estilo para la sección del mapa */
+#map-container {
+    padding: 20px 0;
+}
 
-                  <div class="showcase">
+/* Estilo para el contenedor del mapa */
+#map {
+    height: 400px;
+    width: 100%;
+    border: 1px solid rgba(255, 30, 0, 0.947);
+    margin: 20px 0;
+    padding-bottom: 8.25%; /* Proporción 16:9 para mantener el aspect ratio */
+    position: relative; /* Establecer posición relativa */
+}
 
-                      <a href="ruta.html" class="showcase-img-box">
-                      <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
-                      </a>
+/* Establecer altura y anchura para el mapa en posición absoluta */
+#map iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
-                      <div class="showcase-content">
 
-                      <a href="ruta.html">
-                          <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
-                      </a>
+/* Estilo para el mensaje de alerta */
+.alert {
+    background-color: rgba(255, 30, 0, 0.947);
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    font-family: Arial, sans-serif;
+}
 
-                  
-                      <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
 
-                      <div class="price-box">
-                          <p class="price">Tipo Orden: Mantemiento</p>
-                          <!-- <del>$12.00</del> -->
-                      </div>
 
-                      </div>
 
-                  </div>
 
-                  <div class="showcase">
-                  
-                      <a href="#" class="showcase-img-box">
-                          <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
-                          </a>
+/* Estilos para hacerlo adaptable al móvil */
+@media only screen and (max-width: 768px) {
+  #container {
+    padding: 10px;
+  }
+}
+ 
+
+#input-dato:focus {
+  outline: none;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+  #input-dato {
+    font-size: 16px; /* Reduce el tamaño de la fuente para dispositivos móviles */
+    padding: 8px; /* Reduce el padding para dispositivos móviles */
+  }
+}
+
+@media (max-width: 400px) {
+  #input-dato {
+    font-size: 16px; /* Reduce el tamaño de la fuente para dispositivos móviles */
+    padding: 8px; /* Reduce el padding para dispositivos móviles */
+  }
+}
+
+
+    </style>
+
+ 
+    <main>
+        <section id="map-container">
+            <div id="map"></div>
+        </section>
+
+    </main>
+
   
-                          <div class="showcase-content">
-  
-                          <a href="#">
-                              <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
-                          </a>
-  
-                      
-                          <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
-  
-                          <div class="price-box">
-                              <p class="price">Tipo Orden: Mantemiento</p>
-                              <!-- <del>$12.00</del> -->
-                          </div>
-  
-                          </div>
-                  
-                  </div>
 
-                  <div class="showcase">
-                  
-                      <a href="#" class="showcase-img-box">
-                          <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
-                          </a>
-  
-                          <div class="showcase-content">
-  
-                          <a href="#">
-                              <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
-                          </a>
-  
-                      
-                          <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
-  
-                          <div class="price-box">
-                              <p class="price">Tipo Orden: Mantemiento</p>
-                              <!-- <del>$12.00</del> -->
-                          </div>
-  
-                          </div>
-                  
-                  </div>
-
-                  <div class="showcase">
-                  
-                      <a href="#" class="showcase-img-box">
-                          <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
-                          </a>
-  
-                          <div class="showcase-content">
-  
-                          <a href="#">
-                              <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
-                          </a>
-  
-                      
-                          <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
-  
-                          <div class="price-box">
-                              <p class="price">Tipo Orden: Mantemiento</p>
-                              <!-- <del>$12.00</del> -->
-                          </div>
-  
-                          </div>
-
-                  </div>
-
-   
-
-              </div>
-
-              </div>
-
-           
-
-      </div>
-
-      </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 
+</tr>
+
+<script>
+           let map;
+        const extintorMarkers = [];
+        let inspectorMarker;
+        let rutaPolyline;
+
+        function initMap() {
+            const santaCruzCoords = { lat: -17.783, lng: -63.1821 };
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: santaCruzCoords,
+                mapTypeControl: false,
+                zoomControl: false,
+                streetViewControl: false,
+            });
+
+            const extintorIcon = {
+                url: "images/extintor.png", // Reemplaza con la ruta a tu icono de extintor
+                scaledSize: new google.maps.Size(40, 40),
+            };
+
+            const inspectorIcon = {
+                url: "images/marcador.png", // Reemplaza con la ruta a tu icono de inspector
+                scaledSize: new google.maps.Size(40, 40),
+            };
+
+            // Datos de extintores en Santa Cruz
+            const extintoresData = [
+                { lat: -17.7800, lng: -63.1800, nombre: 'Extintor 1', detalles: 'Ubicación: Sala de reuniones, Piso 1' },
+                { lat: -19.7810, lng: -63.1810, nombre: 'Extintor 2', detalles: 'Ubicación: Pasillo principal, Piso 2' },
+                { lat: -11.7810, lng: -63.1810, nombre: 'Extintor 3', detalles: 'Ubicación: Pasillo principal, Piso 2' },
+                { lat: -13.7810, lng: -63.1810, nombre: 'Extintor 4', detalles: 'Ubicación: Pasillo principal, Piso 2' },
+                { lat: -14.7810, lng: -63.1810, nombre: 'Extintor 5', detalles: 'Ubicación: Pasillo principal, Piso 2' },
+                { lat: -16.7810, lng: -63.1810, nombre: 'Extintor 6', detalles: 'Ubicación: Pasillo principal, Piso 2' },
+                // Agregar más datos de extintores según sea necesario
+            ];
+
+            extintoresData.forEach(extintor => {
+                const marker = agregarMarcador(extintor, extintor.nombre, extintorIcon);
+
+                marker.addListener('click', function () {
+                    mostrarDetalles(extintor.nombre, extintor.detalles);
+                });
+            });
+
+            // Ubicación del inspector
+            const inspectorCoords = { lat: -17.681, lng: -63.1825 };
+            inspectorMarker = agregarMarcador(inspectorCoords, 'Inspector', inspectorIcon);
+
+            inspectorMarker.addListener('click', function () {
+                mostrarDetalles('Inspector', 'Ubicación del inspector');
+            });
+
+            // Ruta de inspección
+            rutaPolyline = new google.maps.Polyline({
+                map: map,
+                strokeColor: '#0000FF',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+            });
+
+            const rutaCoords = [
+                inspectorCoords,
+                { lat: -17.7800, lng: -63.1800 }, // Coordenadas de la primera empresa
+            ];
+
+            rutaPolyline.setPath(rutaCoords);
+        }
+
+        function agregarMarcador(coordenadas, nombre, icono) {
+            const marker = new google.maps.Marker({
+                position: coordenadas,
+                map: map,
+                title: nombre,
+                icon: icono,
+            });
+
+            extintorMarkers.push(marker);
+
+            return marker;
+        }
+
+        function mostrarDetalles(nombre, detalles) {
+            const infowindow = new google.maps.InfoWindow({
+                content: `<strong>${nombre}</strong><br>${detalles}`,
+            });
+
+            const center = map.getCenter();
+
+            infowindow.setPosition(center);
+            infowindow.open(map);
+        }
+</script>
+<!-- Incluye la API de Google Maps con tu clave de API -->
+<script
+src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyDoXPpQqlLk-R1-HEi-PpFLkSUoEhzGDY4&v=weekly&region=GB&callback=initMap&v=weekly&channel=2"
+async></script>
 
 
-      
 
 
-  </main>
+
+
+
 
 
 
