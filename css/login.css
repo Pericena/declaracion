@@ -7,8 +7,8 @@
 }
 
 :root {
-  --container-bgcolor: #fff;
-  --title-color: #444;
+  --container-bgcolor: #F27405;
+  --title-color: #f2f2f2;
   --input-field-bgcolor: #f0f0f0;
   --input-field-icon-color: #acacac;
   --input-field-font-color: #333;
@@ -17,11 +17,11 @@
   --social-icon-border-color: #333;
   --social-icon-color-hover: #F27405;
   --social-icon-border-color-hover: #F27405;
-  --button-bgcolor: #d00c2c;
+  --button-bgcolor: #bc1213;
   --button-font-color: #fff;
-  --button-bgcolor-hover: #2d2625;
-  --container-gradient-color1: #d00c2c;
-  --container-gradient-color2: #d00c2c;
+  --button-bgcolor-hover: #251d15;
+  --container-gradient-color1: #ffff;
+  --container-gradient-color2: #ffff;
   --panel-font-color: #fff;
   --panel-button-border-color: #fff;
 }
