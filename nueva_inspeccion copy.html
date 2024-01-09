@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tag
+  -->
+  <title>Comet Coders</title>
+  <meta name="title" content="CosmicVR-App">
+  <meta name="description" content="This is an eCommerce html template made by codewithsadee">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo/logo.png" type="image/svg+xml">
+
+    <!-- Metaetiqueta para el color de tema en dispositivos móviles -->
+    <meta name="theme-color" content="rgb(3, 6, 33)">
+    <!-- Metaetiquetas para optimización móvil -->
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+
+   <!-- Metaetiqueta para habilitar la instalación como una aplicación web en dispositivos móviles -->
+   <meta name="mobile-web-app-capable" content="yes">
+   
+    <!-- Metaetiqueta para personalizar la barra de estado en dispositivos iOS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Icono de acceso directo en la barra de tareas y en dispositivos iOS -->
+    <link rel="shortcut icon" type="image/png" href="./assets/images/logo/logo.png">
+    <link rel="apple-touch-icon" href="./assets/images/logo/logo.png">
+
+    <!-- Archivo de manifiesto de la aplicación web -->
+    <link rel="manifest" href="./manifest.json">
+    
+
+    <!-- Imagen de inicio en dispositivos iOS -->
+    <link rel="apple-touch-startup-image" href="assets/images/logo/logo.png">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./css/style-prefix.css">
+
+  <!-- 
+    - google font link
+  -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Bangers&family=Carter+One&family=Nunito+Sans:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.jpg">
+
+    <!-- 
+    - script js
+  -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+                
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+
+
+
+  <header class="header" data-header>
+    <div class="container">
+      <div class="header-actions">
+        <a href="" class="action-btn" aria-label="cart" id="enableNotifications">
+          <!-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> -->
+          <!-- <i class='bx bxs-bell' aria-hidden="true" ></i>
+          <span class="btn-badge" style="background-color: red;">0</span> -->
+
+          <i class='bx bx-bell' aria-hidden="true" ></i>
+          <span class="count">0</span>
+          </a>
+      </div>
+    </div>
+  </header>
+
+
+        <div class="header-main">
+
+      <div class="container">
+
+          <a href="#" class="header-logo">
+          <img src="./images/logo/extinfuego_logo.png" alt="Anon's logo" width="120" height="50">
+          </a>
+
+          <div class="header-search-container">
+
+          <input type="search" name="search" class="search-field" placeholder="Buscar...">
+
+          <button class="search-btn">
+              <i class='bx bx-search-alt-2' ></i>
+              <!-- <ion-icon name="search-outline"></ion-icon> -->
+          </button>
+
+          </div>
+
+          <div class="header-user-actions">
+
+          <button class="action-btn">
+              <i class='bx bx-menu' ></i>
+              
+              <!-- <ion-icon name="person-outline"></ion-icon> -->
+          </button>
+
+          <button class="action-btn"  id="enableNotifications">
+              <!-- <ion-icon name="heart-outline"></ion-icon> -->
+              <i class='bx bx-bell' ></i>
+              <span class="count">0</span>
+          </button>
+
+      
+
+
+
+          <a href="mapa.html" class="action-btn">
+              <i class='bx bx-comment-dots' ></i>
+              <!-- <ion-icon name="bag-handle-outline"></ion-icon> -->
+              <span class="count">0</span>
+          </a>
+
+          <button class="action-btn">
+              <i class='bx bx-dots-vertical-rounded' ></i>
+              <!-- <ion-icon name="bag-handle-outline"></ion-icon> -->
+      
+          </button>
+
+
+          </div>
+
+
+
+      </div>
+
+      </div>
+
+      <nav class="desktop-navigation-menu">
+
+      <div class="container">
+
+          <ul class="desktop-menu-category-list">
+
+          <li class="menu-category">
+              <a href="#" class="menu-title">Inicia</a>
+          </li>
+
+
+
+          <li class="menu-category">
+              <a href="#" class="menu-title">Ruta</a>
+          </li>
+
+          <li class="menu-category">
+              <a href="#" class="menu-title">Laboratorio</a>
+          </li>
+
+          </ul>
+
+      </div>
+
+      </nav>
+
+
+
+      <div class="mobile-bottom-navigation">
+
+      <button class="action-btn" data-mobile-menu-open-btn>
+          <i class='bx bx-menu' ></i>
+      </button>
+
+      <a href="mapa.html" class="action-btn">
+          <!-- <ion-icon name="bag-handle-outline"></ion-icon> -->
+          <!-- <i class='bx bx-camera' ></i> -->
+          <i class='bx bx-comment-dots' ></i>
+          <span class="count">0</span>
+          
+      </a>
+
+      <button class="action-btn">
+          <!-- <ion-icon name="home-outline"></ion-icon> -->
+          <i class='bx bx-grid-alt'></i>
+      </button>
+
+      <!-- <button class="action-btn" enableNotifications>
+          <i class='bx bx-bell' ></i>
+          <span class="count">0</span>
+      </button> -->
+
+
+      <header class="header" data-header>
+        <div class="container">
+          <div class="header-actions">
+            <button class="action-btn" aria-label="cart" id="enableNotifications">
+              <!-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> -->
+              <!-- <i class='bx bxs-bell' aria-hidden="true" ></i>
+              <span class="btn-badge" style="background-color: red;">0</span> -->
+
+              <i class='bx bx-bell' aria-hidden="true" ></i>
+              <span class="count">0</span>
+            </button>
+          </div>
+        </div>
+      </header>
+      
+
+      <a href="barra.html" class="action-btn" data-mobile-menu-open-btn>
+          <!-- <ion-icon name="grid-outline"></ion-icon> -->
+          <i class='bx bx-camera' ></i> 
+          <!-- <i class='bx bx-qr' ></i> -->
+      </a>
+
+      <!-- <button class="action-btn" data-mobile-menu-open-btn>
+          
+          <i class='bx bx-dots-vertical-rounded' ></i>
+
+      </button> -->
+
+
+      </div>
+
+      <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
+
+      <div class="menu-top">
+          <h2 class="menu-title">Menu</h2>
+
+          <button class="menu-close-btn" data-mobile-menu-close-btn>
+          <ion-icon name="close-outline"></ion-icon>
+          </button>
+      </div>
+
+      <ul class="mobile-menu-category-list">
+
+          <li class="menu-category">
+          <a href="#" class="menu-title">Inicio</a>
+          </li>
+
+          <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">Hoja de Ruta</p>
+
+              <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
+          </button>
+
+          <ul class="submenu-category-list" data-accordion>
+
+              <li class="submenu-category">
+              <a href="#" class="submenu-title">Test 1</a>
+              </li>
+
+              <li class="submenu-category">
+              <a href="#" class="submenu-title">Test 2</a>
+              </li>
+
+              <li class="submenu-category">
+              <a href="#" class="submenu-title">Test 3</a>
+              </li>
+
+              <li class="submenu-category">
+              <a href="#" class="submenu-title">Test 4</a>
+              </li>
+
+          </ul>
+
+          </li>
+
+         
+
+          <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">Reporte</p>
+
+              <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
+          </button>
+
+          <ul class="submenu-category-list" data-accordion>
+
+              <li class="submenu-category">
+              <a href="#" class="submenu-title">Test 1</a>
+              </li>
+
+              <li class="submenu-category">
+              <a href="#" class="submenu-title">Test 2</a>
+              </li>
+
+              <li class="submenu-category">
+              <a href="#" class="submenu-title">Test 3</a>
+              </li>
+
+              <li class="submenu-category">
+              <a href="#" class="submenu-title">Test 4</a>
+              </li>
+
+          </ul>
+
+          </li>
+
+      </ul>
+
+
+
+      </nav>
+
+  </header>
+
+
+
+
+
+  <!--
+      - MAIN
+  -->
+
+  <main>
+
+      <!--
+      - PRODUCT
+      -->
+
+      <div class="product-container">
+
+      <div class="container">
+
+
+          <!--
+          - SIDEBAR
+          -->
+
+          <div class="sidebar  has-scrollbar" data-mobile-menu>
+
+          <div class="sidebar-category">
+
+              <div class="sidebar-top">
+              <h2 class="sidebar-title">Category</h2>
+
+              <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+                  <ion-icon name="close-outline"></ion-icon>
+              </button>
+              </div>
+
+              <ul class="sidebar-menu-category-list">
+
+              <li class="sidebar-menu-category">
+
+                  <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                      <img src="./images/icons/extintor.png" alt="Hoja de Ruta" width="20" height="20"
+                      class="menu-title-img">
+
+                      <p class="menu-title">Hoja de Ruta</p>
+                  </div>
+
+                  <div>
+                      <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                      <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                  </button>
+
+                  <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                      <p class="product-name">Test 1</p>
+                      <data value="300" class="stock" title="Available Stock">300</data>
+                      </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                      <p class="product-name">Test 2</p>
+                      <data value="60" class="stock" title="Available Stock">60</data>
+                      </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                      <p class="product-name">Test 3</p>
+                      <data value="50" class="stock" title="Available Stock">50</data>
+                      </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                      <p class="product-name">Test 4</p>
+                      <data value="87" class="stock" title="Available Stock">87</data>
+                      </a>
+                  </li>
+
+                  </ul>
+
+              </li>
+
+              <li class="sidebar-menu-category">
+
+                  <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                      <img src="./images/icons/extintor.png" alt="Hoja de Ruta" width="20" height="20"
+                      class="menu-title-img">
+
+                      <p class="menu-title">Hoja de Ruta</p>
+                  </div>
+
+                  <div>
+                      <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                      <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                  </button>
+
+                  <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                      <p class="product-name">Test 1</p>
+                      <data value="300" class="stock" title="Available Stock">300</data>
+                      </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                      <p class="product-name">Test 2</p>
+                      <data value="60" class="stock" title="Available Stock">60</data>
+                      </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                      <p class="product-name">Test 3</p>
+                      <data value="50" class="stock" title="Available Stock">50</data>
+                      </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                      <a href="#" class="sidebar-submenu-title">
+                      <p class="product-name">Test 4</p>
+                      <data value="87" class="stock" title="Available Stock">87</data>
+                      </a>
+                  </li>
+
+                  </ul>
+
+              </li>   
+
+              </ul>
+
+          </div>
+
+
+          </div>
+          <div class="product-box">
+          <!--
+              - PRODUCT MINIMAL
+          -->
+
+          <div class="product-minimal">
+
+              <div class="product-showcase">
+
+              <h2 class="title">Cliente</h2>
+
+              <div class="showcase-wrapper has-scrollbar">
+
+                  <div class="showcase-container">
+
+                  <div class="showcase">
+
+                      <a href="ruta.html" class="showcase-img-box">
+                      <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
+                      </a>
+
+                      <div class="showcase-content">
+
+                      <a href="ruta.html">
+                          <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
+                      </a>
+
+                  
+                      <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
+
+                      <div class="price-box">
+                          <p class="price">Tipo Orden: Mantemiento</p>
+                          <!-- <del>$12.00</del> -->
+                      </div>
+
+                      </div>
+
+                  </div>
+
+                  <div class="showcase">
+                  
+                      <a href="#" class="showcase-img-box">
+                          <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
+                          </a>
+  
+                          <div class="showcase-content">
+  
+                          <a href="#">
+                              <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
+                          </a>
+  
+                      
+                          <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
+  
+                          <div class="price-box">
+                              <p class="price">Tipo Orden: Mantemiento</p>
+                              <!-- <del>$12.00</del> -->
+                          </div>
+  
+                          </div>
+                  
+                  </div>
+
+                  <div class="showcase">
+                  
+                      <a href="#" class="showcase-img-box">
+                          <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
+                          </a>
+  
+                          <div class="showcase-content">
+  
+                          <a href="#">
+                              <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
+                          </a>
+  
+                      
+                          <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
+  
+                          <div class="price-box">
+                              <p class="price">Tipo Orden: Mantemiento</p>
+                              <!-- <del>$12.00</del> -->
+                          </div>
+  
+                          </div>
+                  
+                  </div>
+
+                  <div class="showcase">
+                  
+                      <a href="#" class="showcase-img-box">
+                          <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
+                          </a>
+  
+                          <div class="showcase-content">
+  
+                          <a href="#">
+                              <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
+                          </a>
+  
+                      
+                          <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
+  
+                          <div class="price-box">
+                              <p class="price">Tipo Orden: Mantemiento</p>
+                              <!-- <del>$12.00</del> -->
+                          </div>
+  
+                          </div>
+
+                  </div>
+
+   
+
+              </div>
+
+              </div>
+
+           
+
+      </div>
+
+      </div>
+
+
+
+
+      
+
+
+  </main>
+
+
+
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+
+  <footer>
+
+    <div class="footer-bottom">
+    <div class="container">
+        <p class="copyright">
+        Copyright &copy; <a href="#">Agora</a> Soluciones v.1.
+        </p>
+    </div>
+
+    </div>
+
+</footer>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./notificacion.js"></script>
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
