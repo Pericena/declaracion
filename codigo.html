@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lector QR</title>
+  <style>
+    #video-container {
+      position: relative;
+    }
+
+    #video {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="video-container">
+    <video id="video" playsinline></video>
+  </div>
+  <div id="result"></div>
+
+  <script>
+    // Acceder al elemento de video y al resultado
+    const video = document.getElementById('video');
+    const resultDiv = document.getElementById('result');
+
+    // Solicitar permiso para acceder a la cámara
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+      .then((stream) => {
+        // Enlazar la corriente al elemento de video
+        video.srcObject = stream;
+
+        // Crear un canvas para capturar frames de video
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Variable para evitar múltiples alertas por el mismo código QR
+        let codeDetected = false;
+
+        // Configurar intervalo para capturar frames y buscar códigos QR
+        setInterval(() => {
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+          // Obtener el código QR de la imagen del canvas
+          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+          if (code && !codeDetected) {
+            // Mostrar el resultado
+            resultDiv.textContent = 'Resultado: ' + code.data;
+
+            // Alertar una vez cuando se detecta un código QR
+            alert('Código QR detectado: ' + code.data);
+            codeDetected = true;
+          }
+        }, 1000); // Puedes ajustar el intervalo según tus necesidades
+      })
+      .catch((err) => console.error('Error al acceder a la cámara:', err));
+
+    // Agregar la biblioteca jsQR para decodificar códigos QR
+    // Puedes descargar jsQR desde: https://github.com/cozmo/jsQR
+    // O usar el siguiente enlace de CDN (asegúrate de tener una conexión a Internet):
+    // <script src="https://cdn.jsdelivr.net/npm/jsqr@1.5.0/dist/jsQR.js"></script>
+  </script>
+</body>
+</html>
