@@ -2,15 +2,15 @@
   {
     "notificaciones": [
       {
-        "title": "Extinfuego",
-        "body": "Extinfuego..",
+        "title": "extinfuego",
+        "body": "extinfuego..",
         "icon": "./images/logo/logo.png",
         "silent": true,
         "sound": "./sonido/music.mp3"
       },
       {
-        "title": "Extinfuego",
-        "body": "Extinfuego..",
+        "title": "extinfuego",
+        "body": "extinfuego..",
         "icon": "./images/logo/logo.png",
         "silent": true,
         "sound": "./sonido/music.mp3"

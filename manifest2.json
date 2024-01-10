@@ -1,7 +1,7 @@
 {
-    "name": "Extinfuego",
-    "short_name": "Extinfuego",
-    "description": "Extinfuego",
+    "name": "extinfuego",
+    "short_name": "extinfuego",
+    "description": "extinfuego",
     "background_color": "#ffffff",
     "theme_color": "rgb(3, 6, 33)",
     "orientation": "portrait",

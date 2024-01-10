@@ -58,9 +58,9 @@ function displayNotification() {
 
 function notification() {
   const options = {
-    body: "Extinfuego!",
+    body: "extinfuego!",
     icon: "./images/logo/logo.png",
     sound: "./sonido/sonido.mp3"
   };
-  swRegistration.showNotification("Extinfuego", options);
+  swRegistration.showNotification("extinfuego", options);
 }

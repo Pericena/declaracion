@@ -16,7 +16,7 @@
   --spanish-gray: hsl(0, 0%, 60%);
   --sonic-silver: hsl(0, 0%, 47%);
   --eerie-black: hsl(0, 0%, 13%);
-  --salmon-pink: hsl(353, 100%, 78%);
+  --salmon-pink: rgb(207,106,52);
   --sandy-brown: hsl(29, 90%, 65%);
   --bittersweet: hsl(0, 100%, 70%);
   --ocean-green: hsl(152, 51%, 52%);
@@ -65,6 +65,9 @@
 
 }
 
+.eye {
+  font-size: 24px;
+}
 
 header .theme-toggler{
   background: var(--color-light);
@@ -140,7 +143,7 @@ input::-ms-input-placeholder { font: inherit; }
 
 input::placeholder { font: inherit; }
 
-body { background: var(--white); }
+/* body { background: var(--white); } */
 
 /**
  * scrollbar style
@@ -154,7 +157,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: hsl(0, 0%, 80%);
+  background: hsl(0, 64%, 45%);
   border: 3px solid var(--white);
   -webkit-border-radius: 10px;
           border-radius: 10px;
@@ -192,13 +195,14 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 
 .title {
   color: var(--eerie-black);
-  font-size: var(--fs-5);
+  font-size: var(--fs-4);
   font-weight: var(--weight-600);
   letter-spacing: 0.4px;
   text-transform: capitalize;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--cultured);
   margin-bottom: 30px;
+  text-align: center;
 }
 
 
@@ -554,7 +558,10 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 
 .header-logo img { margin: auto; }
 
-.header-search-container { position: relative; }
+.header-search-container { 
+  position: relative; 
+  width: 100%;
+}
 
 .header-search-container .search-field {
   font-size: var(--fs-7);
@@ -1162,6 +1169,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 }
 
 .sidebar .showcase {
+  
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1218,16 +1226,17 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 }
 
 .sidebar .price-box del {
+  text-align: center;
   color: var(--sonic-silver);
   font-size: 13px;
 }
 
 .sidebar .price-box .price {
+  text-align: center;
   font-size: var(--fs-7);
   font-weight: var(--weight-600);
   color: var(--davys-gray);
 }
-
 
 
 
@@ -1311,6 +1320,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 .product-minimal .showcase-category:hover { color: var(--salmon-pink); }
 
 .product-minimal .price-box {
+
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1323,12 +1333,16 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 }
 
 .product-minimal .price {
+
+  text-align: center;
   font-size: var(--fs-7);
   font-weight: var(--weight-700);
   color: var(--salmon-pink);
 }
 
 .product-minimal .price-box del {
+ 
+  text-align: center;
   font-size: var(--fs-9);
   color: var(--sonic-silver);
 }
