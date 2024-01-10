@@ -5,35 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lector QR</title>
   <style>
+    body {
+      background-color: #f0f0f0; /* Cambia el color de fondo según tus preferencias */
+      font-family: 'Arial', sans-serif;
+    }
+
     #video-container {
-      display: none;
-      position: relative;
+      text-align: center;
+      margin: 20px auto;
     }
 
     #video {
       width: 100%;
       max-width: 600px;
-      margin: 0 auto;
     }
 
     #result {
       margin-top: 20px;
       display: none;
     }
+
+    h1 {
+      text-align: center;
+      color: #333; /* Cambia el color del título según tus preferencias */
+    }
+
+    #controlButtons {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <button id="startButton">Iniciar Lector QR</button>
+  <h1>Lector de QR</h1>
   <div id="video-container">
-    <video id="video" playsinline></video>
+    <video id="video" playsinline autoplay></video>
   </div>
   <div id="result"></div>
+
+  <div id="controlButtons">
+    <button id="startButton" onclick="startCamera()">Iniciar Cámara</button>
+    <button id="stopButton" onclick="stopCamera()">Detener Cámara</button>
+  </div>
 
   <script>
     // Acceder al elemento de video y al resultado
     const video = document.getElementById('video');
     const resultDiv = document.getElementById('result');
-    const startButton = document.getElementById('startButton');
 
     // Crear un canvas para capturar frames de video
     const canvas = document.createElement('canvas');
@@ -42,22 +67,24 @@
     // Variable para evitar múltiples alertas por el mismo código QR
     let codeDetected = false;
 
-    // Función para activar la cámara y mostrar el video
+    // Función para iniciar la cámara
     function startCamera() {
       navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
         .then((stream) => {
           // Enlazar la corriente al elemento de video
           video.srcObject = stream;
-
-          // Mostrar el contenedor de video y ocultar el botón
-          document.getElementById('video-container').style.display = 'block';
-          startButton.style.display = 'none';
         })
         .catch((err) => console.error('Error al acceder a la cámara:', err));
     }
 
-    // Configurar evento click para iniciar la cámara
-    startButton.addEventListener('click', startCamera);
+    // Función para detener la cámara
+    function stopCamera() {
+      const stream = video.srcObject;
+      const tracks = stream.getTracks();
+
+      tracks.forEach((track) => track.stop());
+      video.srcObject = null;
+    }
 
     // Configurar intervalo para capturar frames y buscar códigos QR
     setInterval(() => {
@@ -85,8 +112,8 @@
 
   <!-- Agregar la biblioteca jsQR para decodificar códigos QR -->
   <!-- Puedes descargar jsQR desde: https://github.com/cozmo/jsQR -->
-  <script src="jsQR.js"></script>
   <!-- O usar el siguiente enlace de CDN (asegúrate de tener una conexión a Internet): -->
-  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.5.0/dist/jsQR.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/jsqr@1.5.0/dist/jsQR.js"></script> -->
+  <script src="jsQR.js"></script>
 </body>
 </html>
