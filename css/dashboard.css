@@ -135,6 +135,7 @@ main .people-1{
     display: flex;
     align-items: center;
     gap: 15px;
+ 
 }
 
 main .people-1 h5{
@@ -173,13 +174,14 @@ main .analytics .item .progress{
 }
 
 main .analytics .item .progress .info h5{
-    font-size: 20px;
+    font-size: 12px;
     font-weight: bold;
     color: #000000;
+
 }
 
 main .analytics .item .progress .info p{
-    color: #fff;
+    color: #000000;
     font-size: 12px;
 }
 
@@ -194,24 +196,24 @@ main .analytics .item .progress .progress-bar{
 }
 
 main .analytics .item:nth-child(1) .progress .progress-bar{
-    background: radial-gradient(closest-side, #006ED3 79%, 
+    background: radial-gradient(closest-side, #000000 79%, 
     transparent 80% 100%),
-    conic-gradient(#208BEE 25%, #fff 0%);
+    conic-gradient(#000000 25%, #fff 0%);
 }
 
 main .analytics .item:nth-child(2) .progress .progress-bar{
-    background: radial-gradient(closest-side, #FF993A 79%, transparent 80% 100%),
-    conic-gradient(#FF7E07 50%, #fff 0%);
+    background: radial-gradient(closest-side, #000000 79%, transparent 80% 100%),
+    conic-gradient(#000000 50%, #fff 0%);
 }
 
 main .analytics .item:nth-child(3) .progress .progress-bar{
-    background: radial-gradient(closest-side, #8AC53E 79%, transparent 80% 100%),
-    conic-gradient(#6EB33D 75%, #fff 0%);
+    background: radial-gradient(closest-side, #000000 79%, transparent 80% 100%),
+    conic-gradient(#000000 75%, #fff 0%);
 }
 
 main .analytics .item:nth-child(4) .progress .progress-bar{
-    background: radial-gradient(closest-side, #FFD043 79%, transparent 80% 100%),
-    conic-gradient(#FFC000 25%, #fff 0%);
+    background: radial-gradient(closest-side, #000000 79%, transparent 80% 100%),
+    conic-gradient(#000000 25%, #fff 0%);
 }
 
 main .analytics .item .progress .progress-bar::before{
