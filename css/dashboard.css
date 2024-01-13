@@ -426,7 +426,7 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     height: 60px;
     border-radius: 50%;
     background: radial-gradient(closest-side, #f7f7f7 79%, transparent 80% 100%),
-    conic-gradient(#CCC 25%, #006ED3 0%);
+    conic-gradient(#CCC 25%, #000 0%);
 }
 
 .container .right-section .weekly .progress-bar::before{
