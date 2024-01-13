@@ -2716,6 +2716,7 @@ footer {
   }
 
   .header-user-actions .action-btn {
+      color: #fff;
     position: relative;
     font-size: 35px;
     color: var(--onyx);
