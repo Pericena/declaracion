@@ -25,8 +25,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-
-
+    <!-- <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script> -->
 
     <!-- Metaetiqueta para el color de tema en dispositivos móviles -->
 <meta name="theme-color" content="rgb(3, 6, 33)">
@@ -52,22 +51,25 @@
 </head>
 
 <body>
-<div class="overlay" data-overlay>
 
 
-</div>
+<div class="overlay" data-overlay></div>
 
 <!--
     - MODAL
 -->
 
 <div class="modal" data-modal>
+
     <div class="modal-close-overlay" data-modal-overlay></div>
+
     <div class="modal-content">
+
     <button class="modal-close-btn" data-modal-close>
         <ion-icon name="close-outline"></ion-icon>
     </button>
     </div>
+
 </div>
 
 
@@ -79,25 +81,33 @@
 -->
 
 <div class="notification-toast" data-toast>
+
     <button class="toast-close-btn" data-toast-close>
-        <ion-icon name="notifications-outline"></ion-icon>
+    <ion-icon name="close-outline"></ion-icon>
     </button>
+
     <div class="toast-banner">
     <img src="./images/products/tigo.png" alt="Tigo" width="80" height="70">
     </div>
+
     <div class="toast-detail">
+
     <p class="toast-message">
         Someone in new just bought
     </p>
+
     <p class="toast-title">
         TIGO DATA CENTER KM9
     </p>
+
     <p class="toast-meta">
         <time datetime="PT2M">2 Minutes</time> ago
     </p>
+
     </div>
 
 </div>
+
 
 
 
@@ -467,174 +477,80 @@
 
             <h2 class="title">Nueva Inspección</h2>
 
-            <button id="openModal">
-                <ion-icon name="add-circle-outline"></ion-icon>
-                Registrar nueva Inspeccion
-            </button>
+
             
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeModal">
-                        <ion-icon name="close-circle-outline"></ion-icon>
-                    </span>
-                    <h2>Registrar nueva Inspeccion</h2>
-                    <!-- Formulario de registro de empresa -->
-                    <form id="registrationForm">
-                        <div class="input-container">
-                            <ion-icon name="business-outline"></ion-icon>
-                            <input type="text" id="nombreEmpresa" name="nombreEmpresa" placeholder="Nombre de la Empresa" required>
-                        </div>
-            
-                        <div class="input-container">
-                            <ion-icon name="location-outline"></ion-icon>
-                            <input type="text" id="direccion" name="direccion" placeholder="Dirección" required>
-                        </div>
-            
-                        <div class="input-container">
-                            <ion-icon name="call-outline"></ion-icon>
-                            <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
-                        </div>
-            
-                        <div class="input-container">
-                            <ion-icon name="globe-outline"></ion-icon>
-                            <input type="text" id="zona" name="zona" placeholder="Zona" required>
-                        </div>
-            
-                        <!-- Botones con iconos -->
-                        <div class="button-container">
-                            <button type="submit" id="submitButton">
-                                <ion-icon name="checkmark-circle-outline"></ion-icon>
-                                Guardar
-                            </button>
-                            <button type="button" id="cancelButton">
-                                <ion-icon name="close-circle-outline"></ion-icon>
-                                Cancelar
-                            </button>
-                        </div>
-            
-                        <!-- Mensaje de éxito -->
-                        <div class="success-message" id="successMessage">
-                            <ion-icon name="checkmark-circle-outline"></ion-icon>
-                            Guardado exitosamente
-                        </div>
-            
-                        <!-- Mensaje de alerta -->
-                        <div class="alert-message" id="alertMessage">
-                            <ion-icon name="alert-circle-outline"></ion-icon>
-                            Por favor, completa todos los campos correctamente.
-                        </div>
-            
-                        <!-- Loader -->
-                        <div class="loader" id="loader"></div>
-                    </form>
-                </div>
-            </div>
+
             
 
             
             <style>
-
-                
- /* Estilos para el modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px); /* Aplica un desenfoque al fondo */
-    z-index: 1; /* Asegura que el modal esté en la parte superior */
-}
-
-/* Estilos para el contenido del modal */
-.modal-content {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 80%;
-}
-
-/* Estilos para los botones con iconos */
+/* Estilos para los campos de entrada */
 .input-container {
     position: relative;
     margin-bottom: 16px;
 }
 
-.input-container ion-icon {
+.icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: 12px;
     color: #555;
+    font-size: 1.5em; /* Tamaño de los iconos */
 }
-input {
+
+input[type="text"],
+input[type="checkbox"] {
+    
     padding: 12px;
     padding-left: 40px;
-    border: 1px solid #ddd;
+    border: 2px solid #e1e7eb; /* Borde azul */
     border-radius: 8px;
     box-sizing: border-box;
     width: 100%;
     transition: border-color 0.3s;
+    font-size: 1em; /* Tamaño de la letra */
 }
 
-
+/* Estilos para los botones con iconos */
 .button-container {
+    
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    flex-wrap: wrap; /* Para que los botones se ajusten a múltiples líneas si es necesario */
+    gap: 10px;
 }
-
 
 button {
+    
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 15px; /* Aumentar el tamaño del botón */
+    padding: 15px;
     border: none;
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    width: calc(33.33% - 10px); /* Ajusta el ancho de los botones, teniendo en cuenta el espacio entre ellos */
+    font-size: 1em; /* Tamaño de la letra */
 }
 
 /* Estilos cuando el botón está hover (sobre él) */
 button:hover {
-    background-color: #e05317; /* Cambiar el color de fondo cuando hover */
-    color: white;
-    transform: scale(1.05); /* Efecto de escala al hacer hover */
+    background-color: #e67e22;
+    transform: scale(1.05);
 }
 
-/* Estilos para el botón de Cancelar específicamente */
+#qrButton,
+#barraButton,
+#manualButton,
+#buscarButton,
 #cancelButton {
-    background-color: #e74c3c;
+    background-color: #e67e22;
+    color: white;
 }
 
-/* Estilos para el botón de Guardar específicamente */
-#submitButton {
-    background-color: #4CAF50;
-}
-
-/* Estilos para dispositivos móviles */
-@media (max-width: 600px) {
-    .modal-content {
-        margin: 10% auto;
-        padding: 15px;
-    }
-
-    /* ... (otros ajustes según sea necesario para dispositivos móviles) */
-}
-
-
-/* Estilos para el botón de Guardar específicamente */
-#submitButton {
-    background-color: #4CAF50;
-}
-
-/* Estilos para el mensaje de éxito y alerta */
-.success-message,
-.alert-message {
+/* Estilos para los mensajes de éxito y alerta */
+.message {
     display: none;
     margin-top: 20px;
     padding: 10px;
@@ -643,24 +559,23 @@ button:hover {
 }
 
 .success-message {
-    background-color: #4CAF50;
+    background-color: #2ecc71; /* Verde para mensajes de éxito */
     color: white;
 }
 
 .alert-message {
-    background-color: #e74c3c;
+    background-color: #e74c3c; /* Rojo para mensajes de alerta */
     color: white;
 }
 
-.success-message ion-icon,
-.alert-message ion-icon {
-    margin-right: 8px;
+.message ion-icon {
+    margin-bottom: 8px;
 }
 
 /* Estilos para el loader */
 .loader {
     border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
+    border-top: 4px solid #d2d2d2; /* Azul para el loader */
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -675,55 +590,9 @@ button:hover {
 }
 
 
+
             </style>
 
-
-<script>
-
-    // Obtén referencias a los elementos del DOM
-var modal = document.getElementById('myModal');
-var btnOpenModal = document.getElementById('openModal');
-var btnCloseModal = document.getElementById('closeModal');
-var registrationForm = document.getElementById('registrationForm');
-var cancelButton = document.getElementById('cancelButton');
-var submitButton = document.getElementById('submitButton');
-var successMessage = document.getElementById('successMessage');
-
-// Evento de clic para abrir el modal
-btnOpenModal.onclick = function () {
-    modal.style.display = 'block';
-};
-
-// Evento de clic para cerrar el modal
-btnCloseModal.onclick = function () {
-    modal.style.display = 'none';
-    successMessage.style.display = 'none';
-};
-
-// Evento de clic para cancelar el formulario
-cancelButton.onclick = function () {
-    modal.style.display = 'none';
-    successMessage.style.display = 'none';
-};
-
-// Evento de envío del formulario de registro de empresa
-registrationForm.onsubmit = function (event) {
-    event.preventDefault();
-    // Aquí puedes agregar la lógica para enviar y procesar el formulario de registro
-    // Por ejemplo, puedes utilizar AJAX para enviar los datos al servidor.
-    // Luego, puedes cerrar el modal si el registro es exitoso.
-    successMessage.style.display = 'block';
-};
-
-// Cierra el modal si el usuario hace clic fuera de él
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
-        successMessage.style.display = 'none';
-    }
-};
-
-</script>
 
 
             
@@ -732,177 +601,111 @@ window.onclick = function (event) {
 
                 <div class="showcase-container">
 
-                    <div class="showcase">
 
-                        <a href="nueva_inspeccion_empresa.html" class="-img-box">
-                        <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
-                      
-  
-                        <div class="showcase-content">
-  
-                        <a href="nueva_inspeccion_empresa.html">
-                            <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
-                        
-  
-                        <!-- <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
-   -->
-                        <div class="price-box">
-                            <p class="price">Prioridad</p>
-                            <!-- <del>test</del> -->
-                            
-                        </div>
-                        
-  
-                        </div>
 
-                        <button class="action-btn"  id="enableNotifications">
-                            <ion-icon class="eye" name="eye-outline"></ion-icon>
-                           
-                        </button>
-                        
-                 
-
-                       
-                    </a>
-                    </div>
 
 
 
                     <div class="showcase">
 
-                        <a href="nueva_inspeccion_empresa.html" class="-img-box">
-                        <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
-                      
-  
-                        <div class="showcase-content">
-  
-                        <a href="nueva_inspeccion_empresa.html">
-                            <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
-                        
-  
-                        <!-- <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
-   -->
-                        <div class="price-box">
-                            <p class="price">Prioridad</p>
-                            <!-- <del>test</del> -->
-                            
-                        </div>
-                        
-  
-                        </div>
 
-                        <button class="action-btn"  id="enableNotifications">
-                            <ion-icon class="eye" name="eye-outline"></ion-icon>
-                           
-                        </button>
-                        
-                 
+                   
+                        <form id="inspectionForm">
+                            <div class="input-container">
+                                <ion-icon name="person-outline" class="icon"></ion-icon>
+                                <input type="text" id="inspectorName" name="inspectorName" placeholder="Nombre del Inspector" required>
+                            </div>
+                    
+                            <!-- <div class="input-container">
+                                <ion-icon name="location-outline" class="icon"></ion-icon>
+                                <input type="text" id="location" name="location" placeholder="Ubicación" required>
+                            </div>
+                    
+                            <div class="input-container">
+                                <ion-icon name="navigate-outline" class="icon"></ion-icon>
+                                <input type="text" id="landmarks" name="landmarks" placeholder="Puntos de Referencia" required>
+                            </div> -->
+                    
+                            <label for="startTime">Hora de Inicio:</label>
+                            <div class="input-container">
+                                <ion-icon name="time-outline" class="icon"></ion-icon>
+                                <input type="text" id="startTime" name="startTime" placeholder="Hora de Inicio" readonly>
+                            </div>
+                    
+                            <label for="endTime">Hora de Finalización:</label>
+                            <div class="input-container">
+                                <ion-icon name="time-outline" class="icon"></ion-icon>
+                                <input type="text" id="endTime" name="endTime" placeholder="Hora de Finalización" readonly>
+                            </div>
 
-                       
-                    </a>
+                            <label for="endTime">Iniciar Inspeccion</label>
+                            <div class="input-container">
+                                <ion-icon name="time-outline" class="icon"></ion-icon>
+                                <input type="checkbox" id="startClock" onchange="startClock(this.checked)">
+                            </div>
+                    
+
+                    
+                            <!-- Botones con iconos -->
+                            <div class="button-container">
+
+                                        
+
+                            <button type="submit" id="qrButton">
+                                <ion-icon name="eye-outline"></ion-icon>
+                                Observación
+                            </button>
+
+                                <button type="submit" id="qrButton">
+                                    <ion-icon name="qr-code-outline"></ion-icon>
+                                    Código QR
+                                </button>
+                    
+                                <button type="submit" id="barraButton">
+                                    <ion-icon name="barcode-outline"></ion-icon>
+                                    Código de Barras
+                                </button>
+                    
+                                <button type="button" id="manualButton">
+                                    <ion-icon name="document-text-outline"></ion-icon>
+                                    Manualmente
+                                </button>
+                    
+                                <button type="submit" id="buscarButton">
+                                    <ion-icon name="search-outline"></ion-icon>
+                                    Buscar Extintor
+                                </button>
+                    
+                                <button type="button" id="cancelButton">
+                                    <ion-icon name="close-circle-outline"></ion-icon>
+                                    Cancelar
+                                </button>
+                            </div>
+                    
+                            <!-- Mensaje de éxito -->
+                            <div class="message success-message" id="successMessage">
+                                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                Guardado exitosamente
+                            </div>
+                    
+                            <!-- Mensaje de alerta -->
+                            <div class="message alert-message" id="alertMessage">
+                                <ion-icon name="alert-circle-outline"></ion-icon>
+                                Por favor, completa todos los campos correctamente.
+                            </div>
+                    
+                            <!-- Loader -->
+                            <div class="loader" id="loader"></div>
+                        </form>
+  
+                        
+                        
+                  
+    
                     </div>
 
-                    <div class="showcase">
 
-                        <a href="nueva_inspeccion_empresa.html" class="-img-box">
-                        <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
-                      
-  
-                        <div class="showcase-content">
-  
-                        <a href="nueva_inspeccion_empresa.html">
-                            <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
-                        
-  
-                        <!-- <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
-   -->
-                        <div class="price-box">
-                            <p class="price">Prioridad</p>
-                            <!-- <del>test</del> -->
-                            
-                        </div>
-                        
-  
-                        </div>
 
-                        <button class="action-btn"  id="enableNotifications">
-                            <ion-icon class="eye" name="eye-outline"></ion-icon>
-                           
-                        </button>
-                        
-                 
-
-                       
-                    </a>
-                    </div>
-
-                    <div class="showcase">
-
-                        <a href="nueva_inspeccion_empresa.html" class="-img-box">
-                        <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
-                      
-  
-                        <div class="showcase-content">
-  
-                        <a href="nueva_inspeccion_empresa.html">
-                            <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
-                        
-  
-                        <!-- <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
-   -->
-                        <div class="price-box">
-                            <p class="price">Prioridad</p>
-                            <!-- <del>test</del> -->
-                            
-                        </div>
-                        
-  
-                        </div>
-
-                        <button class="action-btn"  id="enableNotifications">
-                            <ion-icon class="eye" name="eye-outline"></ion-icon>
-                           
-                        </button>
-                        
-                 
-
-                       
-                    </a>
-                    </div>
-
-                    <div class="showcase">
-
-                        <a href="nueva_inspeccion_empresa.html" class="-img-box">
-                        <img src="./images/products/tigo.png" alt="relaxed short full sleeve t-Test 1" width="70" class="showcase-img">
-                      
-  
-                        <div class="showcase-content">
-  
-                        <a href="nueva_inspeccion_empresa.html">
-                            <h4 class="showcase-title">TIGO - DATA CENTER KM9</h4>
-                        
-  
-                        <!-- <a href="#" class="showcase-category">fecha devolucion: martes, 8 de ago. de 2023</a>
-   -->
-                        <div class="price-box">
-                            <p class="price">Prioridad</p>
-                            <!-- <del>test</del> -->
-                            
-                        </div>
-                        
-  
-                        </div>
-
-                        <button class="action-btn"  id="enableNotifications">
-                            <ion-icon class="eye" name="eye-outline"></ion-icon>
-                           
-                        </button>
-                        
-                 
-
-                       
-                    </a>
-                    </div>
 
 
 
@@ -917,6 +720,7 @@ window.onclick = function (event) {
     </div>
 
 </main>
+
 
 <!--
     - FOOTER
@@ -934,6 +738,10 @@ window.onclick = function (event) {
     </div>
 
 </footer>
+
+
+
+
 
 
 <!--
