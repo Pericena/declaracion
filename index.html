@@ -1,128 +1,129 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!--icons script link-->
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Metaetiqueta para el color de tema en dispositivos móviles -->
-    <meta name="theme-color" content="rgb(3, 6, 33)" />
-    <!-- Metaetiquetas para optimización móvil -->
-    <meta name="MobileOptimized" content="width" />
-    <meta name="HandheldFriendly" content="true" />
-    <!-- Metaetiqueta para habilitar la instalación como una aplicación web en dispositivos móviles -->
-    <meta name="mobile-web-app-capable" content="yes" />
-    <!-- Metaetiqueta para personalizar la barra de estado en dispositivos iOS -->
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
+<html>
+<head>
+<title>Feliz San Valentin</title>
+ <link
+      rel="icon"
+      type="image/png"
+      sizes="100%"
+      href="https://cdn-icons-png.flaticon.com/512/9444/9444300.png"
     />
-    <!-- Icono de acceso directo en la barra de tareas y en dispositivos iOS -->
-    <link rel="shortcut icon" type="image/png" href="./images/logo/logo.png" />
-    <link rel="apple-touch-icon" href="./images/logo/logo.png" />
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9e3e3; /* Color de fondo */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    text-align: center;
+    padding-top: 50px;
+  }
+  
+  p {
+    font-size: 32px;
+    color: #ff0066; /* Color del texto */
+  }
+  
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 650px;
+    height: 650px;
+    border-radius: 50%; /* Hace la imagen redonda */
+    border: 4px solid #ff0066; /* Borde rosa */
+  }
+  
+  .button {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .button-yes {
+    background-color: #ff0066; /* Color rosa */
+    color: #fff; /* Color del texto */
+  }
+  
+  .button-no {
+    background-color: #ffffff; /* Color blanco */
+    color: #ff0066; /* Color rosa */
+    border: 2px solid #ff0066; /* Borde rosa */
+  }
+  
+  .button:hover {
+    background-color: #ffccd9; /* Color de fondo al pasar el mouse */
+  }
 
-    <!-- Archivo de manifiesto de la aplicación web -->
-    <link rel="manifest" href="manifest.json" />
+</style>
+</head>
+<body>
 
-    <!-- Imagen de inicio en dispositivos iOS -->
-    <link rel="apple-touch-startup-image" href="./images/logo/logo.png" />
-    <!--stylesheet link-->
-
-    <link rel="stylesheet" href="./css/login.css" />
-    <!--title-->
-  </head>
-  <body>
-    <!--container start-->
-    <div class="container">
-      <!--form container start-->
-      <div class="forms-container">
-        <div class="signin-signup">
-          <!--Suscribete form start-->
-          <form method="GET" class="sign-in-form" action="dashboard.html">
-         
-              <h2 class="title">Ingresar sus datos</h2>
-                
-            <!--input for username-->
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                value="admin@gmail.com"
-                required
-                autocomplete="email"
-                autofocus
-                placeholder="email"
-              />
-            </div>
-            <!--input for password-->
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input
-                id="password"
-                type="password"
-                name="password"
-                value="admin"
-                required
-                autocomplete="current-password"
-                placeholder="contraseña"
-              />
-            </div>
-
-            <button class="btn" id="sign-in-btn">
-              Iniciar Seccion
-              <i class="fas fa-user"></i>
-            </button>
-
-
-            <!-- <button class="btn" id="sign-in-btn">
-              Transportista
-              <i class="fas fa-user"></i>
-            </button>  -->
-          </form>
-          
-          <!--Suscribete form end-->
-          <div class="panel">
-            <p>Agora Soluciones</p>
-          </div> 
-        </div>
-
-    
-      </div>
-      <!--form container end-->
-
-      <div class="panels-container">
-        <!--left panel for Iniciar Seccion form start-->
-        <div class="panel left-panel">
-          <div class="content">
-            
-            <img src="images/logo/extinfuego_logo.png" alt="" width="300" />
-            <!-- <p style="color: rgb(12, 2, 2);">
-              "Extinguego App: La llave para tu seguridad, el control en tus manos."
-              ¡Bienvenido!
-            </p> -->
-            <h3>¡Bienvenido!</h3>
-          </div>
-          <!--image tag for svg file-->
-        </div>
-
-        <!--right panel for Suscribete form start-->
-        <!-- <div class="panel right-panel">
-          <div class="content">
-            <button class="btn transparent" id="sign-in-btn">
-              Iniciar Seccion
-            </button>
-          </div>
-        </div> -->
-      </div>
-      <!--panel container end-->
+  <div class="container">
+    <p>¿Me preguntaba si tienes planes para el 14 de febrero? Estoy
+       pensando en hacer algo contigo :)<br>¿Serías mi San Valentín?
+    <a href="tkm.html">quieres ser mi novia</a>  
+    </p>
+    <!-- <img src="https://media.tenor.com/WQjlw86rlpsAAAAC/muah-kiss.gif" alt="Beso"> -->
+    <img src="foto2.jpeg" alt="">
+    <div>
+      <button class="button button-yes" id="Button1" onclick="alert('GRACIAS! TE QUIERO GATITA TRAVIESA <3')">Sí</button>
+      <button class="button button-no" id="Button2" onmouseover="moveButton(this)">No</button>
+      <audio autoplay>
+        <source src="musicca.mp3" type="audio/mpeg">
+        Tu navegador no admite la reproducción de audio.
+    </audio>
     </div>
-    <!--container end-->
-  </body>
+
+
+  
+    
+  </div>
+  
+
+</body>
+<style>
+#Button1 {
+position: fixed;
+top: 70%;
+left: 55%;
+transform: translate(-50%, -50%);
+}
+#Button2 {
+position: absolute;
+ left: 39%;
+  top: 68%;
+}
+</style>
+
+<script>
+  function redirectToIndex2() {
+    window.location.href = "tkm.html";
+  }
+
+const Button2 = document.getElementById('Button2');
+let left = 40;
+Button2.addEventListener('mouseover', function() {
+  if(left == 40){
+    left = 48;
+  }else{
+    left = 40;
+  }
+  this.style.left = left + '%';
+});
+
+</script>
+<script>document.getElementById('Button1').addEventListener('click', function() {
+alert('GRACIAS! TE QUIERO GATITA TRAVIESA <3');
+});
+</script>
+</body>
 </html>
