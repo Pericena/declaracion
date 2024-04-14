@@ -77,10 +77,17 @@
     <video id="video" autoplay loop="true" src="video.mp4"></video>
   </a-assets>
 
-  <a-marker preset="hiro">
+  <!-- <a-marker preset="hiro">
     <a-video src="#video" width="100%" height="100%" position="0 0 -3"></a-video>
+  </a-marker> -->
+
+  <a-marker preset="hiro">
+    <a-entity position="0 0 -3">
+      <a-video src="#video" width="4" height="2.25" rotation="0 0 0"></a-video>
+    </a-entity>
   </a-marker>
 
+  
   <a-entity camera></a-entity>
 </a-scene>
 
