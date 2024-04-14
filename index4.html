@@ -74,15 +74,18 @@
   id="scene"
 >
   <a-assets>
-    <video id="video" autoplay loop="true" src="video.mp4"></video>
+    <!-- Carga tu imagen JPG -->
+    <img id="imagen" src="polera.jpg">
   </a-assets>
 
   <a-marker preset="hiro">
-    <a-video src="#video" width="100%" height="100%" position="0 0 -3"></a-video>
+    <!-- Muestra la imagen en el marcador -->
+    <a-image src="#imagen" width="4.25" height="4.25" position="0 0 -3"></a-image>
   </a-marker>
 
   <a-entity camera></a-entity>
 </a-scene>
+
 
 
 
