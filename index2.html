@@ -20,13 +20,14 @@
     href="https://fonts.googleapis.com/css2?family=Bangers&family=Carter+One&family=Nunito+Sans:wght@400;700&display=swap"
     rel="stylesheet">
 
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
 
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="gesture-detector.js"></script>
-    <script src="gesture-handler.js"></script>
+  <script src="{{ asset('js/gesture-detector.js') }}"></script>
+    <script src="{{ asset('js/gesture-handler.js') }}"></script>
 
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
 
@@ -45,22 +46,44 @@
   }
 </style>
 <body style="margin: 0; overflow: hidden;">
-  <a-scene embedded arjs="debugUIEnabled: false;">
-    <!-- Marcador de AR -->
-    <a-marker preset="hiro" id="miMarcador">
-        <!-- Video en realidad aumentada -->
-        <a-video src="video.mp4" width="400" height="300" position="0 0 0"></a-video>
-    </a-marker>
-    
-    <!-- Cámara -->
-    <a-entity camera></a-entity>
+  <a-scene
+  arjs
+  embedded
+  renderer="logarithmicDepthBuffer: true;"
+  vr-mode-ui="enabled: false"
+  gesture-detector
+  id="scene"
+>
+  <a-assets>
+    <a-asset-item
+      id="bowser"
+      src="polera-3.glb"
+    >
+    </a-asset-item>
+  </a-assets>
+
+  <a-marker
+    preset="hiro"
+    raycaster="objects: .clickable"
+    emitevents="true"
+    cursor="fuse: false; rayOrigin: mouse;"
+    id="markerA"
+  >
+
+    <a-entity
+      id="bowser-model"
+      gltf-model="#bowser"
+      position="0 0 0"
+      scale="0.05 0.05 0.05"
+      class="clickable"
+      gesture-handler
+    >
+    </a-entity>
+
+  </a-marker>
+  <a-entity camera></a-entity>
 </a-scene>
 
-<!-- Video -->
-<video id="mivideo" autoplay loop crossorigin="anonymous" style="display: none;">
-    <source src="video.mp4" type="video/mp4">
-    <!-- Añade aquí diferentes formatos de video si es necesario para la compatibilidad -->
-</video>
 
 <script>
     // Espera a que el DOM esté completamente cargado
