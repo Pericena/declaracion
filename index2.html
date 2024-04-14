@@ -30,94 +30,18 @@
 
 
 </head>
-<body id="top">
 
-
-  <header class="header" data-header>
-    <div class="container">
-
-      <button class="nav-toggle-btn" aria-label="toggle manu" data-nav-toggler>
-        <ion-icon name="menu-outline" aria-hidden="true" class="menu-icon"></ion-icon>
-        <ion-icon name="close-outline" aria-label="true" class="close-icon"></ion-icon>
-      </button>
-
-      <!-- <a href="#" class="logo">C-coders</a> -->
-      <!-- <img src="assets/images/logo/CosmicVR-AI-App-2.png" alt="" width="80" height="80" style="background-color: black;"> -->
-
-
-
-      <div class="header-actions">
-
-        <button class="action-btn" aria-label="Search">
-          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-        </button>
-
-        <button class="action-btn user" aria-label="User">
-          <!-- <ion-icon name="person-outline" aria-hidden="true"></ion-icon> -->
-          <i class='bx bxs-user' aria-hidden="true"></i>
-        </button>
-
-        <button class="action-btn" aria-label="cart">
-          <!-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> -->
-          <i class='bx bxs-bell' aria-hidden="true" ></i>
-          <span class="btn-badge" style="background-color: red;">5</span>
-        </button>
-
-      </div>
-
-    </div>
-  </header>  
-
-
-  <a-scene
-    arjs
-    embedded
-    renderer="logarithmicDepthBuffer: true;"
-    vr-mode-ui="enabled: false"
-    gesture-detector
-    id="scene"
-  >
-    <a-assets>
-      <video id="video" src="video.mp4" autoplay loop crossorigin="anonymous"></video>
-    </a-assets>
-
-    <a-marker
-      preset="hiro"
-      raycaster="objects: .clickable"
-      emitevents="true"
-      cursor="fuse: false; rayOrigin: mouse;"
-      id="markerA"
-    >
-      <a-video
-        src="#video"
-        width="16"
-        height="9"
-        position="0 0 -2"
-        rotation="0 0 0"
-      ></a-video>
+<body>
+  <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;">
+    <!-- Objeto a visualizar en AR -->
+    <a-box position="0 0.5 0" material="color: red;"></a-box>
+    <!-- Marcador de AR -->
+    <a-marker type="pattern" url="path-to-your-pattern-marker.patt">
+      <a-box position="0 0.5 0" material="color: blue;"></a-box>
     </a-marker>
-
+    <!-- Cámara -->
     <a-entity camera></a-entity>
   </a-scene>
-
-
-<div class="container-chat">
-
-  <p class="data1">It is a giant cloud of dust and gas in space. Some nebulae come from gas and dust ejected by the explosion of a dying star, such as a supernova. .</p>
-  <p class="data2">Other nebulae are regions where new stars begin to form</p>
-</div>
-<center>
-  <button class="back-button" onclick="goBack()">Back</button>
-</center>
-
-
-<script>
-  function goBack() {
-      window.history.back();
-  }
-</script>
-
-
-
+</body>
 </body>
 </html>
