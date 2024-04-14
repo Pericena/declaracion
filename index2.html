@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR.js + ModelViewer</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    #arjsScene {
+      height: 100vh;
+    }
+    #modelContainer {
+      width: 50%;
+      height: 50%;
+      margin: auto;
+    }
+    video {
+      width: 100%;
+    }
+  </style>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
+</head>
+<body>
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    <!-- AR.js Content -->
+    <a-marker preset="hiro">
+      <!-- Modelo 3D -->
+      <a-entity id="modelContainer" position="0 0 0">
+        <model-viewer src="in_love_-_robots.glb" alt="Modelo 3D" auto-rotate camera-controls></model-viewer>
+      </a-entity>
+      
+      <!-- Video -->
+      <a-video src="video.mp4" width="16" height="9" position="0 0 -2" rotation="0 0 0"></a-video>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+</html>
