@@ -35,11 +35,10 @@
 
 <body>
   <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;">
-    <!-- Objeto a visualizar en AR -->
-    <a-box position="0 0.5 0" material="color: red;"></a-box>
     <!-- Marcador de AR -->
     <a-marker type="pattern" url="path-to-your-pattern-marker.patt">
-      <a-box position="0 0.5 0" material="color: blue;"></a-box>
+      <!-- Video en realidad aumentada -->
+      <a-video src="video.mp4" width="2" height="1"></a-video>
     </a-marker>
     <!-- Cámara -->
     <a-entity camera></a-entity>
