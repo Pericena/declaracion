@@ -32,17 +32,49 @@
 
 
 </head>
-
-<body>
-  <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;">
+<style>
+  /* Estilos adicionales para mejorar la apariencia */
+  a-marker {
+    padding: 0;
+    margin: 0;
+  }
+  a-video {
+    border: 2px solid #ffffff; /* Añadir borde blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+</style>
+<body style="margin: 0; overflow: hidden;">
+  <a-scene embedded arjs="debugUIEnabled: false;">
     <!-- Marcador de AR -->
-    <a-marker type="pattern" url="path-to-your-pattern-marker.patt">
-      <!-- Video en realidad aumentada -->
-      <a-video src="video.mp4" width="2" height="1"></a-video>
+    <a-marker preset="hiro" id="miMarcador">
+        <!-- Video en realidad aumentada -->
+        <a-video src="#mivideo" width="4" height="3" position="0 0 0"></a-video>
     </a-marker>
+    
     <!-- Cámara -->
     <a-entity camera></a-entity>
-  </a-scene>
+</a-scene>
+
+<!-- Video -->
+<video id="mivideo" autoplay loop crossorigin="anonymous" style="display: none;">
+    <source src="video.mp4" type="video/mp4">
+    <!-- Añade aquí diferentes formatos de video si es necesario para la compatibilidad -->
+</video>
+
+<script>
+    // Espera a que el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', function () {
+        // Obtener el marcador de AR
+        var marker = document.querySelector("#miMarcador");
+        
+        // Agregar un evento al marcador para cuando se encuentre
+        marker.addEventListener('markerFound', function () {
+            console.log("Marcador encontrado");
+            // Aquí puedes agregar cualquier acción adicional que desees realizar cuando se encuentre el marcador
+        });
+    });
+</script>
 </body>
 </body>
 </html>
