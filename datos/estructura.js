@@ -1,25 +1,3 @@
-// const sibtn =document.querySelector('#sibtn');
-
-// sibtn.addEventListener('click',function() {
-//     alert('Estaba más seguro de tu sí que de que el chocolate es delicioso. Soy un tipo con suerte y buen gusto, ¿verdad?')
-// });
-// const nobnt = document.querySelector('#nobnt');
-// nobnt.addEventListener('mouseover', function(){
-//     const randdomX = parseInt(Math.random()*100);
-//     const randomY = parseInt(Math.random()*100);
-//     nobnt.style.setProperty('top',randomY+'%');
-//     nobnt.style.setProperty('left',randdomX+'%');
-//     nobnt.style.setProperty('transform',`translate(-${randdomX}%,-${randomY}%)`);
-// })
-
-
-
-
-
-
-
-
-
 const $btnYes=document.querySelector("#btnYes"),
       $btnNo=document.querySelector("#btnNo");
 
@@ -40,7 +18,7 @@ $btnNo.addEventListener("mouseover",()=>{
 $btnYes.addEventListener("click",()=>{
     let $div=document.createElement("div"),
         $fragment=document.createDocumentFragment();
-    $div.innerHTML="<h4>Estaba seguros que dirias que si xd , eres la tuerca que encaja perfectamente en el engranaje de mi vida.</h4>";
+$div.innerHTML = "<h4>¡No puedo creer que dijiste que sí! 😍 Eres la clave para desbloquear mi felicidad. 💖</h4><h4>¿Listos para iniciar juntos esta épica aventura? 🚀🎮</h4>";
     $div.style.backgroundColor="white";
     $fragment.appendChild($div);
     

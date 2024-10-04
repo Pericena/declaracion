@@ -1,129 +1,307 @@
-<html>
-<head>
-<title>Feliz San Valentin</title>
- <link
-      rel="icon"
-      type="image/png"
-      sizes="100%"
-      href="https://cdn-icons-png.flaticon.com/512/9444/9444300.png"
-    />
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f9e3e3; /* Color de fondo */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .container {
-    text-align: center;
-    padding-top: 50px;
-  }
-  
-  p {
-    font-size: 32px;
-    color: #ff0066; /* Color del texto */
-  }
-  
-  img {
-    display: block;
-    margin: 0 auto;
-    width: 650px;
-    height: 650px;
-    border-radius: 50%; /* Hace la imagen redonda */
-    border: 4px solid #ff0066; /* Borde rosa */
-  }
-  
-  .button {
-    display: inline-block;
-    margin: 20px;
-    padding: 15px 30px;
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .button-yes {
-    background-color: #ff0066; /* Color rosa */
-    color: #fff; /* Color del texto */
-  }
-  
-  .button-no {
-    background-color: #ffffff; /* Color blanco */
-    color: #ff0066; /* Color rosa */
-    border: 2px solid #ff0066; /* Borde rosa */
-  }
-  
-  .button:hover {
-    background-color: #ffccd9; /* Color de fondo al pasar el mouse */
-  }
+<!DOCTYPE html>
+<html lang="es">
 
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día</title>
+    <link rel="icon" type="image/png" sizes="100%" href="https://cdn-icons-png.flaticon.com/512/9444/9444300.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .spotify-card {
+            background-color: rgba(28, 28, 28, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #1DB954;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .album-cover {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .album-cover img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            opacity: 0.7; /* Opacidad de la imagen */
+        }
+
+        /* Efecto de ondas de música */
+        .wave {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn-icons-png.flaticon.com/512/9444/9444299.png') repeat-x;
+            opacity: 0.5;
+            animation: wave-animation 1.5s linear infinite;
+        }
+
+        @keyframes wave-animation {
+            0% {
+                transform: translate(-50%, 0);
+            }
+            50% {
+                transform: translate(-50%, -5px);
+            }
+            100% {
+                transform: translate(-50%, 0);
+            }
+        }
+
+        .track-info {
+            margin-top: 1px;
+        }
+
+        .track-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .artist {
+            font-size: 18px;
+            color: #b3b3b3;
+        }
+
+        .lyrics {
+            margin: 20px 0;
+            text-align: left;
+            font-size: 14px;
+            display: none; /* Inicialmente oculto */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+            padding: 15px;
+            border-radius: 10px;
+            width: 90%;
+            max-height: 70%;
+            overflow-y: auto;
+            color: #fff;
+        }
+
+        .description {
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        .description a {
+            color: #1DB954;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .description a:hover {
+            text-decoration: underline;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 10px;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .heart {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #ff4081;
+            transition: transform 0.2s;
+        }
+
+        .heart:hover {
+            transform: scale(1.2);
+        }
+
+        .video iframe {
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        /* Botón de reproducción redondo */
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background-color: #1DB954;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .play-button:hover {
+            background-color: #1aa34a;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .play-button:active {
+            transform: translate(-50%, -50%) scale(0.95);
+        }
+
+        .track-info {
+            margin-top: 8px; /* Ajusta el espacio para que no se superponga al botón */
+        }
+    </style>
 </head>
+
 <body>
 
-  <div class="container">
-    <p>¿Me preguntaba si tienes planes para el 14 de febrero? Estoy
-       pensando en hacer algo contigo :)<br>¿Serías mi San Valentín?
-    <a href="tkm.html">quieres ser mi novia</a>  
-    </p>
-    <!-- <img src="https://media.tenor.com/WQjlw86rlpsAAAAC/muah-kiss.gif" alt="Beso"> -->
-    <img src="foto2.jpeg" alt="">
-    <div>
-      <button class="button button-yes" id="Button1" onclick="alert('GRACIAS! TE QUIERO GATITA TRAVIESA <3')">Sí</button>
-      <button class="button button-no" id="Button2" onmouseover="moveButton(this)">No</button>
-      <audio autoplay>
-        <source src="musicca.mp3" type="audio/mpeg">
-        Tu navegador no admite la reproducción de audio.
-    </audio>
+    <div class="spotify-card">
+        <h1>Feliz Aniversario</h1>
+        <div class="album-cover">
+            <img src="foto.jpg" alt="Foto de aniversario">
+            <div class="wave"></div>
+            <button class="play-button" id="play-button"><i class="fas fa-play"></i></button>
+            <div class="lyrics" id="lyrics">
+                <strong>Letra de la canción:</strong>
+                <p class="lyrics-line">Deseando que tu amor venga hacia mí</p>
+                <p class="lyrics-line">Sintiéndolo lento, a través de este sueño</p>
+                <p class="lyrics-line">Tócame con un beso, tócame con un beso</p>
+                <p class="lyrics-line">Ahora estás más allá de sentirlo</p>
+                <p class="lyrics-line">Dime que es amor, dime que es real</p>
+                <p class="lyrics-line">Tócame con un beso, siénteme en tus labios</p>
+                <p class="lyrics-line">Porque aquí es donde quiero estar</p>
+                <p class="lyrics-line">Donde todo es tan dulce y celestial</p>
+                <p class="lyrics-line">Te estoy dando todo mi amor</p>
+            </div>
+        </div>
+        <audio controls id="audio-player" style="display:none;">
+            <source src="HeavenlyCigarettesAfterSex.mp3" type="audio/mpeg">
+            Tu navegador no admite la reproducción de audio.
+        </audio>
+        <div class="track-info">
+            <p class="track-title">Heavenly</p>
+            <p class="artist">Cigarettes After Sex</p>
+        </div>
+        <div class="description">
+     Estar contigo se siente como un viaje continuo, lleno de pequeños descubrimientos 
+      que hacen cada día único. Hay algo en tu compañía que me envuelve, una sensación 
+      suave y tranquila, como si el mundo a nuestro alrededor se volviera más claro. Me 
+      gusta pensar que aún nos queda
+       tanto por conocer de nosotros mismos, y eso es lo que más disfruto
+            <a href="tkm.html">¿quieres ser mi novia?</a>
+        </div>
+        <div class="video">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/qT6AEtM0su0?si=1wORXCpC4wO3bXYE"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </div>
+        <div class="heart" id="heart-button">❤️</div>
     </div>
 
-
-  
-    
-  </div>
-  
-
-</body>
-<style>
-#Button1 {
-position: fixed;
-top: 70%;
-left: 55%;
-transform: translate(-50%, -50%);
-}
-#Button2 {
-position: absolute;
- left: 39%;
-  top: 68%;
-}
-</style>
-
 <script>
-  function redirectToIndex2() {
-    window.location.href = "tkm.html";
-  }
+    const audio = document.getElementById('audio-player');
+    const playButton = document.getElementById('play-button');
+    const lyrics = document.getElementById('lyrics');
+    const lyricsLines = document.querySelectorAll('.lyrics-line');
+    let lyricsDisplayed = false; // Control para mostrar las letras
 
-const Button2 = document.getElementById('Button2');
-let left = 40;
-Button2.addEventListener('mouseover', function() {
-  if(left == 40){
-    left = 48;
-  }else{
-    left = 40;
-  }
-  this.style.left = left + '%';
-});
+    playButton.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            playButton.innerHTML = '<i class="fas fa-pause"></i>';
+            if (!lyricsDisplayed) {
+                lyrics.style.display = 'block'; // Mostrar letras al reproducir
+                lyricsDisplayed = true; // Evitar mostrar las letras múltiples veces
+            }
+        } else {
+            audio.pause();
+            playButton.innerHTML = '<i class="fas fa-play"></i>';
+        }
+    });
 
+    audio.ontimeupdate = function () {
+        const time = audio.currentTime;
+
+        // Mostrar letras al minuto 0:18
+        if (time >= 18 && time < 19) { // Cambiado a 18 segundos
+            lyrics.style.display = 'block';
+        }
+
+        // Cambia la letra de acuerdo al tiempo
+        if (time >= 5 && time < 10) {
+            highlightLine(1);
+        } else if (time >= 10 && time < 15) {
+            highlightLine(2);
+        } else if (time >= 15 && time < 20) {
+            highlightLine(3);
+        } else if (time >= 20 && time < 25) {
+            highlightLine(4);
+        } else if (time >= 25 && time < 30) {
+            highlightLine(5);
+        } else if (time >= 30 && time < 35) {
+            highlightLine(6);
+        } else if (time >= 35 && time < 40) {
+            highlightLine(7);
+        } else if (time >= 40 && time < 45) {
+            highlightLine(8);
+        } else if (time >= 45 && time < 50) {
+            highlightLine(9);
+        }
+    };
+
+    function highlightLine(index) {
+        lyricsLines.forEach((line, i) => {
+            line.style.opacity = i === index ? '1' : '0.5';
+            line.style.color = i === index ? '#1DB954' : '#fff';
+        });
+    }
+
+    // Botón de corazón
+    const heartButton = document.getElementById('heart-button');
+    let liked = false;
+
+    heartButton.addEventListener('click', () => {
+        liked = !liked;
+        heartButton.style.color = liked ? 'red' : '#ff4081';
+    });
 </script>
-<script>document.getElementById('Button1').addEventListener('click', function() {
-alert('GRACIAS! TE QUIERO GATITA TRAVIESA <3 PASO POR TU CASA MAS UN RATO XD');
-});
-</script>
+
 </body>
+
 </html>

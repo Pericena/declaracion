@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Feliz San Valentin</title>
+ <link
+      rel="icon"
+      type="image/png"
+      sizes="100%"
+      href="https://cdn-icons-png.flaticon.com/512/9444/9444300.png"
+    />
+
+  </head>
+<body>
+
+  <div class="container">
+    <h1>Feliz Aniversario</h1>
+    <img src="foto.jpg" alt="">
+    <div>
+      <!-- <button class="button button-yes" id="Button1" onclick="alert('GRACIAS! TE QUIERO GATITA TRAVIESA <3')">Sí</button>
+      <button class="button button-no" id="Button2" onmouseover="moveButton(this)">No</button> -->
+      <audio autoplay>
+        <source src="musicca.mp3" type="audio/mpeg">
+        Tu navegador no admite la reproducción de audio.
+    </audio>
+ <p>
+     Estar contigo se siente como un viaje continuo, lleno de pequeños descubrimientos 
+      que hacen cada día único. Hay algo en tu compañía que me envuelve, una sensación 
+      suave y tranquila, como si el mundo a nuestro alrededor se volviera más claro. Me 
+      gusta pensar que aún nos queda
+       tanto por conocer de nosotros mismos, y eso es lo que más disfruto
+      <br>¿Serías mi San Valentín?
+    <a href="tkm.html">quieres ser mi novia</a>  
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/qT6AEtM0su0?si=1wORXCpC4wO3bXYE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>    
+  </div>
+  
+
+</body>
+<style>
+#Button1 {
+position: fixed;
+top: 70%;
+left: 55%;
+transform: translate(-50%, -50%);
+}
+#Button2 {
+position: absolute;
+ left: 39%;
+  top: 68%;
+}
+</style>
+
+<script>
+  function redirectToIndex2() {
+    window.location.href = "tkm.html";
+  }
+
+const Button2 = document.getElementById('Button2');
+let left = 40;
+Button2.addEventListener('mouseover', function() {
+  if(left == 40){
+    left = 48;
+  }else{
+    left = 40;
+  }
+  this.style.left = left + '%';
+});
+
+</script>
+<!-- <script>document.getElementById('Button1').addEventListener('click', function() {
+alert('GRACIAS! TE QUIERO TRAVIESA <3 PASO POR TU CASA MAS UN RATO XD');
+});
+</script> -->
+</body>
+</html>
