@@ -1,6 +1,5 @@
 *{
     margin: 0;
-    color: #d291bc;
     font-family: "Comfortaa", cursive;
     font-family: "Edu VIC WA NT Beginner", cursive;
 
@@ -24,9 +23,15 @@ model-viewer {
 p{
     font-size: xx-large;
     /* padding: 15%; */
-    font-size: 12px;
+    font-size: 14px;
 
 }
+
+h1 {
+color: #d291bc;
+}
+
+ 
 button{
     font-size:x-large;
     padding: 0.60em;
