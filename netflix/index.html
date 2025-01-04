@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="card.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <nav id="top_navbar">
+    <h1 id="project_logo_name">NETFLIX</h1>
+    <div id="dropdown">
+      <label for="toggle-dropdown" id="dropdown-button"><i class="fas fa-bars"></i></label>
+      <input type="checkbox" name="" id="toggle-dropdown">
+      <div id="vertical-dropdown">
+        <p><a href="#">Inicio</a></p>
+        <p><a href="#">Series</a></p>
+        <p><a href="#">Películas</a></p>
+        <p><a href="#">Tendencias</a></p>
+        <p><a href="#">Mi Lista</a></p>
+      </div>
+    </div>
+    <ul id="nav_preferences">
+      <a href="#">
+        <li class="preferences">Inicio</li>
+      </a>
+      <a href="#">
+        <li class="preferences">Series</li>
+      </a>
+      <a href="#">
+        <li class="preferences">Películas</li>
+      </a>
+      <a href="#">
+        <li class="preferences">Tendencias</li>
+      </a>
+      <a href="#">
+        <li class="preferences">Mi Lista</li>
+      </a>
+      <a href="#">
+        <li id="responsive_spare_ele" class="preferences"></li>
+      </a>
+    </ul>
+    <form id="for_navsearch">
+      <input type="text" name="search" placeholder="Buscar..." />
+    </form>
+    <div id="side_icons">
+      <a href="#">
+        <img src="https://s2.svgbox.net/octicons.svg?ic=gift&color=white" width="28" height="28" alt="" />
+      </a>
+      <div id="user-control">
+        <label for="show-button">
+          <img id="user_navbar" src="images/3.jpeg" width="28" height="28" alt="" />
+        </label>
+        <input type="checkbox" id="show-button" style="display: none;">
+        <div id="user-display">
+          <div>
+            <img id="user1" src="images/2.jpeg" width="28" height="28" alt="" />
+            <a>Nadia</a>
+          </div>
+          <div>
+            <img id="user2" src="images/1.jpeg" width="28" height="28" alt="" />
+            <a>Luishiño</a>
+          </div>
+          <hr>
+          <a href="" style="color: white;">
+            <div>Administrar Cuenta</div>
+          </a>
+          <a href="" style="color: white;">
+            <div>Perfil</div>
+          </a>
+          <a href="" style="color: white;">
+            <div>Cerrar Sesión</div>
+          </a>
+        </div>
+      </div>
+      <a href="">
+        <img src="https://s2.svgbox.net/hero-outline.svg?ic=adjustments&color=white" width="28" height="28" alt="" />
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div id="card-container">
+    <div class="card" style="background-image:url(images/3.jpeg)">
+      <div class="card-content">
+        <!-- <div class="logo-container">
+                  <p>Netflix</p>
+                    <img class="logo" src="https://occ-0-2991-2164.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABXURwJOxrQ65DCB9qLq4XMUQqDXvJEgxlKPVFmixBZVGMMIm2ntHP0fSgNzZA9epg8Re85xj2nE4GnIfFnux1b99rypxWgCaPMe_Mytf4CPec5pblLPkmXUS2Zqm3HTnPo_mEgX1MKt5K2xioly_cxOofv18-c122JMJoHMz5aA6tQ.png?r=654">
+                </div> -->
+        <div class="details-container">
+          <h1 id="title">¡Feliz Aniversario!</h1>
+          <div id="title-info">
+            <p class="grey-effect">Desde el 4 de agosto de 2024 &nbsp; | &nbsp; Hasta hoy, 4 de enero de 2025 &nbsp; |
+              &nbsp;
+              ¡Un total de 5 meses juntos!</p>
+          </div>
+          <div id="details">
+            <p>Hoy celebramos nuestro tiempo juntos, lleno de amor, risas y momentos inolvidables. Gracias por ser parte
+              de esta
+              increíble aventura. ¡Por muchos meses más! ❤️</p>
+          </div>
+          <div id="buttons-container">
+            <button id="btn1" class="btn"><i class="fas fa-play" style="font-size: 0.9rem;"></i> &nbsp;VER NUESTRO
+              RECUERDO</button>
+            <button id="btn2" class="btn"><i class="fas fa-heart" style="font-size: 1rem;"></i> &nbsp;AGREGAR MÁS
+              RECUERDOS</button>
+          </div>
+          <div id="actor-details">
+            <p><span class="grey-effect">Estrella principal:</span> Tú <br> <span class="grey-effect">Creador:</span>
+              Nuestro
+              amor y confianza mutuos</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="videos-section">
+    <h1 id="header">Videos</h1>
+    <div id="videos-container">
+      <div class="video-card">
+        <div id="video-1" class="video"></div>
+        <p class="video-text">Agosto 2024: "El comienzo de nuestra historia"</p>
+        <div id="play-content">
+          <i class="fas fa-play-circle" id="play-button" onclick="playTrailer(0, 'trailer-1', 'closeTrailer-1')"></i>
+        </div>
+      </div>
+      <div class="video-card">
+        <div id="video-2" class="video"></div>
+        <p class="video-text">Septiembre 2024: "Una cita aterradora (películas de terror)"</p>
+        <div id="play-content">
+          <i class="fas fa-play-circle" id="play-button" onclick="playTrailer(1, 'trailer-2', 'closeTrailer-2')"></i>
+        </div>
+      </div>
+      <div class="video-card">
+        <div id="video-3" class="video"></div>
+        <p class="video-text">Octubre 2024: "La risa en una noche de comedia"</p>
+        <div id="play-content">
+          <i class="fas fa-play-circle" onclick="playTrailer(2, 'trailer-3', 'closeTrailer-3')"></i>
+        </div>
+      </div>
+      <div class="video-card">
+        <div id="video-4" class="video"></div>
+        <p class="video-text">Noviembre 2024: "Planes locos pero perfectos (aventura)"</p>
+        <div id="play-content">
+          <i class="fas fa-play-circle" onclick="playTrailer(3, 'trailer-4', 'closeTrailer-4')"></i>
+        </div>
+      </div>
+
+      <!-- Diciembre 2024 -->
+      <div class="video-card">
+        <div id="video-5" class="video"></div>
+        <p class="video-text">Diciembre 2024: "Navidad juntos, nuestra primera celebración"</p>
+        <div id="play-content">
+          <i class="fas fa-play-circle" onclick="playTrailer(4, 'trailer-5', 'closeTrailer-5')"></i>
+        </div>
+      </div>
+
+      <!-- Enero 2025 -->
+      <div class="video-card">
+        <div id="video-6" class="video"></div>
+        <p class="video-text">Enero 2025: "Un nuevo año, nuevas metas juntos"</p>
+        <div id="play-content">
+          <i class="fas fa-play-circle" onclick="playTrailer(5, 'trailer-6', 'closeTrailer-6')"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- For trailers -->
+  <div class="trailerContainer">
+    <video src="trailers/agosto.mp4" controls id="trailer-1"></video>
+    <img src="images/close.png" alt="" id="closeTrailer-1" class="closeButton">
+  </div>
+  <div class="trailerContainer">
+    <video src="trailers/Septiembre.mp4" controls id="trailer-2"></video>
+    <img src="images/close.png" alt="" id="closeTrailer-2" class="closeButton">
+  </div>
+  <div class="trailerContainer">
+    <video src="trailers/octubre.mp4" controls id="trailer-3"></video>
+    <img src="images/close.png" alt="" id="closeTrailer-3" class="closeButton">
+  </div>
+  <div class="trailerContainer">
+    <video src="trailers/Noviembre.mp4" controls id="trailer-4"></video>
+    <img src="images/close.png" alt="" id="closeTrailer-4" class="closeButton">
+  </div>
+
+  <div class="trailerContainer">
+    <video src="trailers/Diciembre1.mp4" controls id="trailer-5"></video>
+    <img src="images/close.png" alt="" id="closeTrailer-5" class="closeButton">
+  </div>
+
+  <div class="trailerContainer">
+    <video src="trailers/enero.mp4" controls id="trailer-6"></video>
+    <img src="images/close.png" alt="" id="closeTrailer-6" class="closeButton">
+  </div>
+
+  <div id="episodes-section">
+    <h1 id="header">Episodios</h1>
+    <div id="episodes-container">
+      <div id="episode-card">
+        <div class="episode" id="episode-1"></div>
+  <h3 class="celebration-heading">1. El inicio de nuestra aventura</h3>
+  <span class="celebration-content">Recordamos cómo comenzó todo, con risas, nervios y muchas emociones.</span>
+      </div>
+      <div id="episode-card">
+        <div class="episode" id="episode-2"></div>
+        <h3 class="celebration-heading">2. Nuestra primera cita especial</h3>
+        <span class="celebration-content">Un día lleno de magia y conexión, nuestra primera salida inolvidable.</span>
+      </div>
+      <div id="episode-card">
+        <div class="episode" id="episode-3"></div>
+        <h3 class="celebration-heading">3. Superando juntos los retos</h3>
+        <span class="celebration-content">Enfrentamos desafíos, pero juntos logramos salir adelante con amor y apoyo.</span>
+        </div>
+      <div id="episode-card">
+        <div class="episode" id="episode-4"></div>
+  <h3 class="celebration-heading">4. Festejando logros y sueños</h3>
+  <span class="celebration-content">Cada meta alcanzada se convirtió en un motivo para celebrar nuestro equipo.</span>
+  </div>
+      <div id="episode-card">
+        <div class="episode" id="episode-5"></div>
+  <h3 class="celebration-heading">5. Una Navidad mágica</h3>
+  <span class="celebration-content">Compartimos momentos inolvidables en nuestra primera Navidad juntos.</span>
+  </div>
+      <div id="episode-card">
+        <div class="episode" id="episode-6"></div>
+    <h3 class="celebration-heading">6. Bienvenido, nuevo año</h3>
+    <span class="celebration-content">Dimos la bienvenida al año con nuevos sueños y propósitos en pareja.</span>
+    </div>
+      <div id="episode-card">
+        <div class="episode" id="episode-7"></div>
+  <h3 class="celebration-heading">7. Momentos simples, pero felices</h3>
+  <span class="celebration-content">Las pequeñas cosas: paseos, risas, películas y abrazos cálidos.</span>
+  </div>
+      <div id="episode-card">
+        <div class="episode" id="episode-8"></div>
+    <h3 class="celebration-heading">8. Un futuro brillante</h3>
+    <span class="celebration-content">Con ilusión, soñamos con todo lo que vendrá, sabiendo que juntos somos
+      invencibles.</span>
+    </div>
+    </div>
+  </div>
+
+
+  <!-- Seperator -->
+  <div style="width: 100%; border-top: 5px solid #1f1f1f; margin-top: 1rem;"></div>
+
+  <!-- Originals -->
+  <div id="originals">
+    <h1>Más Originales</h1>
+    <div id="cards-container">
+      <div class="shows"
+        style="background-image: url(images/10.jpeg);">
+      </div>
+      <div class="shows"
+        style="background-image: url(images/11.jpeg);">
+      </div>
+      <div class="shows"
+        style="background-image: url(images/1.jpeg);">
+      </div>
+      <div class="shows"
+        style="background-image: url(images/12.jpeg);">
+      </div>
+      <div class="shows"
+        style="background-image: url(images/8.jpeg);">
+      </div>
+      <div class="shows"
+        style="background-image: url(images/5.jpeg);">
+      </div>
+      <div class="shows"
+        style="background-image: url(images/9.jpeg);">
+      </div>
+      <div class="shows"
+        style="background-image: url(images/3.jpeg);">
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+<!-- Pie de Página -->
+<footer class="footer">
+  <p>¿Preguntas? Llamame a mi xd</p>
+  <div class="footer-cols">
+    <ul>
+      <li><a href="#">Preguntas Frecuentes</a></li>
+      <li><a href="#">Relaciones con Inversionistas</a></li>
+      <li><a href="#">Formas de Ver</a></li>
+      <li><a href="#">Información Corporativa</a></li>
+      <li><a href="#">Originales de FlickrTv</a></li>
+    </ul>
+    <ul>
+      <li><a href="#">Centro de Ayuda</a></li>
+      <li><a href="#">Empleos</a></li>
+      <li><a href="#">Términos de Uso</a></li>
+      <li><a href="#">Contáctenos</a></li>
+    </ul>
+    <ul>
+      <li><a href="#">Cuenta</a></li>
+      <li><a href="#">Canjear Tarjetas de Regalo</a></li>
+      <li><a href="#">Privacidad</a></li>
+      <li><a href="#">Prueba de Velocidad</a></li>
+    </ul>
+    <ul>
+      <li><a href="#">Centro de Medios</a></li>
+      <li><a href="#">Comprar Tarjetas de Regalo</a></li>
+      <li><a href="#">Preferencias de Cookies</a></li>
+      <li><a href="#">Avisos Legales</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+  <!-- Songs -->
+  <audio src="soundtrack/1.mp3" id="soundtrack-1" style="display: none;"></audio>
+  <audio src="soundtrack/2.mp3" id="soundtrack-2" style="display: none;"></audio>
+  <audio src="soundtrack/3.mp3" id="soundtrack-3" style="display: none;"></audio>
+  <audio src="soundtrack/4.mp3" id="soundtrack-4" style="display: none;"></audio>
+
+  <!-- Js -->
+  <script src="card.js"></script>
+
+</body>
+
+</html>
