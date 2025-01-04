@@ -19,7 +19,7 @@ $btnYes.addEventListener("click",()=>{
     let $div=document.createElement("div"),
         $fragment=document.createDocumentFragment();
 $div.innerHTML = "<h4>¡No puedo creer que dijiste que sí! 😍 Eres la clave para desbloquear mi felicidad. 💖</h4><h4>¿Listos para iniciar juntos esta épica aventura? 🚀🎮</h4>";
-    $div.style.backgroundColor="white";
+    $div.style.backgroundColor="red";
     $fragment.appendChild($div);
     
     document.querySelector(".container").appendChild($fragment);
