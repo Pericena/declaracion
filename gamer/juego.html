@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batalla Legendaria - LOL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Agrega GSAP y Canvas Confetti en tu HTML si no los tienes -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1"></script>
+
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    canvas {
+      border: 2px solid white;
+      background: url('mapa.png') no-repeat center center / cover;
+      position: relative;
+      width: 100%;
+      /* Se ajusta al ancho del contenedor */
+      height: 100vh;
+      /* El alto ocupará el 100% de la altura visible del navegador */
+      max-width: 100%;
+      /* Asegura que no se desborde el contenedor */
+      object-fit: cover;
+      /* Asegura que la imagen de fondo cubra el área del canvas sin distorsionar */
+    }
+
+    @media (max-width: 768px) {
+      canvas {
+        height: 80vh;
+        /* Reduce la altura en dispositivos pequeños para dejar espacio para otros elementos */
+      }
+    }
+
+    @media (max-width: 480px) {
+      canvas {
+        height: 60vh;
+        /* Para pantallas aún más pequeñas, reduce más la altura */
+      }
+    }
+
+
+    .victory-popup {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .popup-content {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: red;
+    }
+
+
+    /* Estilo de cada caja de jugador */
+    .stats {
+      background-color: rgba(0, 0, 255, 0.6);
+      /* Fondo translúcido azul */
+      border-radius: 12px;
+      /* Bordes más redondeados para un aspecto más suave */
+      padding: 12px 20px;
+      /* Asegura suficiente espacio interno */
+      width: 45%;
+      /* Ocupa el 45% del ancho en pantallas grandes */
+      min-width: 200px;
+      /* Ancho mínimo para evitar que se aplasten */
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      /* Sombra más pronunciada */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: white;
+      text-align: center;
+      position: absolute;
+      top: 20px;
+      /* Colocación en la parte superior */
+      z-index: 10;
+      /* Asegura que las cajas estén por encima del mapa */
+      opacity: 0.9;
+      /* Mejor visibilidad sobre el mapa */
+      padding: 15px 20px;
+      /* Padding interno mejorado */
+    }
+
+    #player1Stats {
+      left: 1%;
+      /* Posición a la izquierda */
+    }
+
+    #player2Stats {
+      right: 1%;
+      /* Posición a la derecha */
+    }
+
+    /* Efecto hover de las cajas */
+    .stats:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      /* Sombra más intensa */
+      transform: translateY(-5px);
+      /* Efecto de elevación al pasar el mouse */
+    }
+
+    /* Ajustes de texto */
+    .stats h2 {
+      font-size: 1.1em;
+      /* Tamaño de texto ligeramente mayor */
+      font-weight: bold;
+      margin-bottom: 8px;
+      /* Más espacio debajo del título */
+      text-transform: uppercase;
+    }
+
+    .stats p {
+      font-size: 1em;
+      /* Fuente más legible */
+      margin: 6px 0;
+      /* Separación entre párrafos */
+    }
+
+
+
+
+    /* Estilo general para el contenedor de los botones flotantes */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 80px;
+      /* Tamaño del contenedor */
+      height: 100px;
+      /* Aumentamos un poco la altura */
+      border-radius: 50%;
+      /* Contenedor redondo */
+      background-color: rgba(0, 0, 255, 0.5);
+      /* Fondo con un tono azul */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      /* Sombra para darle profundidad */
+      padding: 15px;
+      /* Un poco más de espacio */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Estilo para los botones flotantes */
+    .floating-buttons button {
+      background-color: rgba(0, 0, 255, 0.7);
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      /* Botones más pequeños */
+      height: 40px;
+      font-size: 1.5em;
+      /* Aumentamos el tamaño de la fuente */
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Posicionamiento de los botones alrededor del botón central */
+    .floating-buttons button:nth-child(1) {
+      /* Arriba */
+      position: absolute;
+      top: 0;
+    }
+
+    .floating-buttons button:nth-child(2) {
+      /* Izquierda */
+      position: absolute;
+      left: 0;
+    }
+
+    .floating-buttons button:nth-child(3) {
+      /* Derecho */
+      position: absolute;
+      right: 0;
+    }
+
+    .floating-buttons button:nth-child(4) {
+      /* Abajo */
+      position: absolute;
+      bottom: 0;
+    }
+
+    .floating-buttons button:nth-child(5) {
+      /* Centro: Atacar */
+      position: relative;
+      z-index: 1;
+      /* Coloca el botón de "Atacar" sobre los otros */
+    }
+
+    /* Efecto hover para los botones */
+    .floating-buttons button:hover {
+      background-color: rgba(0, 0, 255, 0.9);
+      transform: translateY(-5px);
+      /* Efecto de elevación */
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Efecto focus para los botones (cuando el botón es clickeado o activado) */
+    .floating-buttons button:focus {
+      outline: none;
+      transform: translateY(-3px);
+      /* Ligeramente más bajo que el hover */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Efecto de transición más suave en los botones */
+    .floating-buttons button:active {
+      transform: translateY(0);
+      /* Cuando se presiona el botón, vuelve al lugar */
+    }
+
+    /* Botón de ataque especial posicionado arriba */
+    .floating-buttons #specialAttack {
+      position: absolute;
+      top: -40px;
+      /* Lo colocamos por encima de los otros botones */
+      background-color: rgba(255, 165, 0, 0.8);
+      /* Color diferente para el ataque especial */
+      font-size: 1.6em;
+      /* Hacemos el tamaño del ícono más grande */
+      transition: opacity 1s ease-in-out;
+    }
+
+    /* Clase para ocultar el botón */
+    .hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+
+    @keyframes specialEffectAnimation {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .special-effect {
+      font-size: 20px;
+      text-align: center;
+      color: #fff;
+      position: absolute;
+      z-index: 10;
+    }
+
+    .special-effect-image {
+      width: 100px;
+      height: 100px;
+      margin-top: 10px;
+      animation: specialEffectAnimation 1s ease-out;
+    }
+  </style>
+
+  <script>
+
+    // Función para cerrar el popup
+    function closePopup() {
+      document.getElementById('popup1').classList.add('hidden');
+    }
+
+    // Función para iniciar el juego
+    function startGame() {
+      // Obtener el popup y los botones flotantes
+      const popup = document.getElementById('popup1');
+      const floatingButtons = document.querySelector('.floating-buttons');
+
+      // Verificar que los elementos existen antes de intentar manipularlos
+      if (popup && floatingButtons) {
+        // Esconde el popup
+        popup.classList.add('hidden');
+
+        // Muestra los botones flotantes para jugar
+        floatingButtons.classList.remove('hidden');
+        floatingButtons.classList.add('flex');
+
+        // Aquí puedes agregar cualquier lógica para continuar el juego
+        // como activar temporizadores, habilitar controles, etc.
+        console.log("El juego ha comenzado.");
+      } else {
+        // Si no se encuentran los elementos, mostrar un error en la consola
+        console.error('No se encontraron los elementos necesarios para iniciar el juego.');
+      }
+    }
+
+    // Inicializa el juego mostrando el popup al cargar la página
+    window.onload = function () {
+      setTimeout(function () {
+        // Mostrar el popup después de 1 segundo de cargar la página
+        document.getElementById('popup').classList.remove('hidden');
+
+        // Pausar el juego hasta que el jugador haga clic en iniciar
+        console.log("Juego pausado. Esperando inicio.");
+      }, 1000);
+    };
+
+    // Mostrar el botón de ataque especial después de 5 segundos
+    setTimeout(function () {
+      const specialAttackButton = document.getElementById("specialAttack");
+      specialAttackButton.classList.remove("hidden");
+    }, 5000); // 5000 ms = 5 segundos
+
+
+  </script>
+</head>
+
+<body class="">
+
+
+  <!-- Popup de instrucciones -->
+  <div id="popup1" class="popup fixed inset-0 flex items-center justify-center bg-black bg-opacity-85 z-50">
+    <div
+      class="bg-gradient-to-r from-gray-900 via-gray-800 to-black p-8 rounded-lg shadow-2xl max-w-lg w-full transform transition duration-500 ease-in-out hover:scale-105">
+      <h2
+        class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-yellow-400 text-center mb-8">
+        ¡Bienvenido, héroe de esta épica aventura!</h2>
+      <p class="text-sm text-white text-center mb-6">Este <span class="font-bold text-pink-400">03 de febrero de
+          2025</span>, celebramos nuestro aniversario con una travesía que pondrá a prueba tu valentía. ¡Prepárate para
+        una aventura inolvidable!</p>
+
+      <ul class="text-sm text-white space-y-4">
+        <li><span class="font-semibold text-teal-400">WASD</span> - Moverse por el campo de batalla</li>
+        <li><span class="font-semibold text-teal-400">Espacio</span> - Atacar con tu fuerza</li>
+        <li><span class="font-semibold text-teal-400">Q</span> - Desatar tu habilidad especial</li>
+        <li><span class="font-semibold text-teal-400">Shift</span> - Defenderte con valentía</li>
+      </ul>
+
+      <p class="text-center text-white mt-6">¡La cuenta regresiva para la acción ha comenzado!</p>
+
+      <div class="flex justify-center mt-8">
+        <button id="popup" onclick="startGame()"
+          class="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-800 hover:to-teal-900 text-white font-bold py-4 px-10 rounded-lg shadow-xl transform hover:scale-110 transition duration-300 ease-in-out">¡Iniciar
+          y Conquistar!</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Estadísticas de los jugadores -->
+  <div class="flex justify-between items-center mb-4">
+    <!-- Nadia -->
+    <div id="player1Stats"
+      class="stats flex items-center space-x-4 bg-gradient-to-r from-gray-800 via-gray-900 to-black p-4 rounded-lg shadow-lg">
+      <img src="heroe/avatar-nadia.jpg" alt="Avatar Nadia" class="w-16 h-16 rounded-full border-2 border-white">
+      <div class="text-white">
+        <h2 class="text-xs font-bold text-indigo-400">Nadia❤️</h2> <!-- Nombre del jugador -->
+        <p class="text-xs">Vida: <span id="player1Hp" class="text-red-500 font-bold">1000</span></p>
+        <p class="text-xs">Daño: <span id="player1Dmg" class="text-blue-500 font-bold">50</span></p>
+      </div>
+    </div>
+
+    <!-- Luishiño -->
+    <div id="player2Stats"
+      class="stats flex items-center space-x-4 bg-gradient-to-r from-gray-800 via-gray-900 to-black p-4 rounded-lg shadow-lg">
+      <img src="heroe/avatar-luishiño.jpg" alt="Avatar Luishiño" class="w-16 h-16 rounded-full border-2 border-white">
+      <div class="text-white">
+        <h2 class="text-xs font-bold text-teal-400">Luishiño 😎</h2> <!-- Nombre del jugador -->
+        <p class="text-xs">Vida: <span id="player2Hp" class="text-red-500 font-bold">1200</span></p>
+        <p class="text-xs">Daño: <span id="player2Dmg" class="text-blue-500 font-bold">60</span></p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Canvas del juego -->
+  <canvas id="gameCanvas" width="800" height="500" class="absolute top-0 left-0"></canvas>
+
+  <!-- Botones del juego -->
+  <div class="floating-buttons flex space-x-4 justify-center mt-4">
+    <button id="moveUp" class="game-btn">↑</button>
+    <button id="moveLeft" class="game-btn">←</button>
+    <button id="moveRight" class="game-btn">→</button>
+    <button id="moveDown" class="game-btn">↓</button>
+    <button id="attack" class="game-btn">⚔️</button>
+    <button id="specialAttack" class="game-btn hidden">⚡</button>
+  </div>
+
+
+  <!-- Popup de Poder lanzado -->
+  <div id="attackPopup" class="attack-popup hidden absolute">
+    <h3 id="powerUsedText" class="text-lg font-bold text-white"></h3>
+    <img id="powerImage" class="w-32 h-32 mt-2" alt="Poder usado">
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const canvasWidth = 800;
+      const canvasHeight = 500;
+
+      let champion1 = {
+        name: "Nadia",
+        hp: 1000,
+        maxHp: 1000,
+        damage: 50,
+        speed: 4,
+        x: 300,  // Posición horizontal del Nadia
+        y: 200,  // Puedes cambiar esta posición si quieres más separación vertical
+        width: 70,
+        height: 80,
+        image: new Image(),
+        attackDelay: 1000,
+        lastAttackTime: 0,
+      };
+      champion1.image.src = "heroe/nadia.png";
+
+      let champion2 = {
+        name: "Luishiño",
+        hp: 1200,
+        maxHp: 1200,
+        damage: 60,
+        speed: 3,
+        x: 100,  // Aumentamos la separación horizontal (de 600 a 400)
+        y: 150,  // Mantener la misma posición vertical para alineación horizontal
+        width: 70,
+        height: 80,
+        image: new Image(),
+      };
+      champion2.image.src = "heroe/luishiño2.png";
+
+
+      document.getElementById("player1Hp").textContent = champion1.hp;
+      document.getElementById("player1Dmg").textContent = champion1.damage;
+      document.getElementById("player2Hp").textContent = champion2.hp;
+      document.getElementById("player2Dmg").textContent = champion2.damage;
+
+      const attackSound = new Audio('attack_sound.mp3');
+      const specialAbilitySound = new Audio('special_ability_sound.mp3');
+      const victorySound = new Audio('victory_sound.mp3');
+      const backgroundMusic = new Audio('attack_sound.mp3');
+      backgroundMusic.loop = true;
+
+      document.addEventListener('click', () => {
+        backgroundMusic.play().catch(err => {
+          console.error("Error al reproducir música de fondo:", err);
+        });
+
+        // Aquí puedes agregar otros sonidos que quieras reproducir después de la interacción
+        attackSound.play().catch(err => {
+          console.error("Error al reproducir sonido de ataque:", err);
+        });
+      });
+
+      let keys = {};
+      window.addEventListener("keydown", (e) => (keys[e.key] = true));
+      window.addEventListener("keyup", (e) => (keys[e.key] = false));
+
+      function update() {
+        if (keys["w"] && champion1.y > 0) champion1.y -= champion1.speed;
+        if (keys["s"] && champion1.y < canvasHeight - champion1.height) champion1.y += champion1.speed;
+        if (keys["a"] && champion1.x > 0) champion1.x -= champion1.speed;
+        if (keys["d"] && champion1.x < canvasWidth - champion1.width) champion1.x += champion1.speed;
+
+        if (keys[" "] && (Date.now() - champion1.lastAttackTime) > champion1.attackDelay) {
+          attack(champion1, champion2);
+          champion1.lastAttackTime = Date.now();
+        }
+        if (keys["q"]) specialAbility(champion1, champion2);
+
+        champion2AI();
+        draw();
+      }
+
+      function champion2AI() {
+        let targetX = champion1.x;
+        let targetY = champion1.y;
+        if (champion2.x > targetX) champion2.x -= champion2.speed;
+        if (champion2.x < targetX) champion2.x += champion2.speed;
+        if (champion2.y > targetY) champion2.y -= champion2.speed;
+        if (champion2.y < targetY) champion2.y += champion2.speed;
+
+        if (Math.random() < 0.01) { // Probabilidad de ataque aleatorio
+          randomAttack(champion2, champion1);
+        }
+      }
+
+      function attack(attacker, target) {
+        if (Math.abs(attacker.x - target.x) < 60 && Math.abs(attacker.y - target.y) < 60) {
+          target.hp -= attacker.damage;
+          updateStats();
+          attackSound.play();
+        }
+      }
+
+      function specialAbility(attacker, target) {
+        // Probabilidad de que se active la habilidad especial (20% de probabilidad)
+        const randomChance = Math.random(); // Genera un número aleatorio entre 0 y 1
+
+        // Si la probabilidad es menor a 0.2 (20%), se activa la habilidad especial
+        if (randomChance < 0.2) {
+          if (Math.abs(attacker.x - target.x) < 100) {
+            // Daño moderado para la habilidad especial
+            const specialDamage = attacker.damage * 1.2; // Daño más leve
+
+            // Aplicar el daño al objetivo
+            target.hp -= specialDamage;
+            updateStats();
+
+            // Sonido de habilidad especial
+            specialAbilitySound.play();
+
+            // Mostrar efectos visuales
+            showSpecialAbilityEffect(attacker, target);
+          }
+        }
+      }
+
+      function showSpecialAbilityEffect(attacker, target) {
+        // Elegir un poder aleatorio para mostrar en la habilidad especial
+        const effects = ['Explosión', 'Fuerza', 'Vórtice', 'Relámpago'];
+        const effectImages = {
+          'Explosión': 'poder/true.gif',
+          'Fuerza': 'poder/true.gif',
+          'Vórtice': 'poder/true.gif',
+          'Relámpago': 'poder/true.gif'
+        };
+
+        const selectedEffect = effects[Math.floor(Math.random() * effects.length)];
+        const effectImage = effectImages[selectedEffect];
+
+        // Crear un div para mostrar el efecto de la habilidad especial
+        const specialEffect = document.createElement('div');
+        specialEffect.classList.add('special-effect');
+        specialEffect.innerHTML = `
+    <h2>${attacker.name} usó ${selectedEffect}!</h2>
+    <img src="${effectImage}" alt="${selectedEffect}" class="special-effect-image">
+  `;
+
+        // Estilo para el popup de habilidad especial
+        specialEffect.style.position = 'absolute';
+        specialEffect.style.left = `${target.x}px`;
+        specialEffect.style.top = `${target.y}px`;
+        specialEffect.style.transform = 'translate(-50%, -50%)';
+        specialEffect.style.animation = 'specialEffectAnimation 1s ease-out';
+
+        document.body.appendChild(specialEffect);
+
+        // Eliminar el efecto después de 1 segundo
+        setTimeout(() => {
+          specialEffect.remove();
+        }, 1000);
+      }
+
+
+
+      function randomAttack(attacker, target) {
+        const powers = ['Rayo', 'Fuego', 'Tornado', 'Hielo'];
+        const images = {
+          'Rayo': 'poder/rayo.gif',
+          'Fuego': 'poder/true.gif',  // Cambié las imágenes para cada poder
+          'Tornado': 'poder/agua.gif',
+          'Hielo': 'poder/rayo.gif'
+        };
+
+        // Elegir poder aleatorio
+        const selectedPower = powers[Math.floor(Math.random() * powers.length)];
+
+        // Mostrar el popup de ataque con animación
+        showPopup(selectedPower, images[selectedPower], attacker);
+
+        // Agregar un retraso para que el ataque se vea más lento
+        setTimeout(() => {
+          // Aplicar daño después del retraso
+          target.hp -= attacker.damage * 1.5; // Poder aleatorio más fuerte
+          updateStats();
+
+          // Agregar animación para el ataque
+          applyAttackAnimation(selectedPower, attacker, target);
+        }, 1000); // Retraso de 1 segundo para ver la animación del poder
+      }
+
+
+
+      // Función para obtener la imagen correspondiente al poder del ataque
+      function getEffectImage(power) {
+        // Aquí puedes usar diferentes valores de 'power' para devolver la imagen correspondiente
+        const effectImages = {
+          'Rayo': 'poder/rayo.gif',
+          'Fuego': 'poder/true.gif',  // Cambié las imágenes para cada poder
+          'Tornado': 'poder/agua.gif',
+          'Hielo': 'poder/rayo.gif'
+        };
+
+        // Si el poder está definido en el objeto, devuelve la URL de la imagen
+        return effectImages[power] || 'poder/rayo.gif';  // Imagen por defecto si no se encuentra el poder
+      }
+
+      // Función para aplicar la animación de ataque
+      function applyAttackAnimation(power, attacker, target) {
+        const attackEffect = document.createElement('div');
+        attackEffect.classList.add('attack-effect');
+        attackEffect.innerHTML = `
+    <h2>${attacker.name} ha lanzado ${power}!</h2>
+    <img src="${getEffectImage(power)}" alt="${power}" class="attack-animation">
+  `;
+
+        attackEffect.style.position = 'absolute';
+        attackEffect.style.left = `${target.x}px`; // Colocar en la posición de target
+        attackEffect.style.top = `${target.y}px`;
+        attackEffect.style.animation = 'attackAnimation 1s ease-out forwards';
+
+        document.body.appendChild(attackEffect);
+
+        // Eliminar la animación después de 1 segundo
+        setTimeout(() => {
+          attackEffect.remove();
+        }, 1000);
+      }
+
+
+      function updateStats() {
+        // Asegurarse de que la vida no sea menor que 0
+        champion1.hp = Math.max(champion1.hp, 0);
+        champion2.hp = Math.max(champion2.hp, 0);
+
+        // Actualiza los valores de vida en la interfaz
+        document.getElementById("player1Hp").textContent = champion1.hp;
+        document.getElementById("player2Hp").textContent = champion2.hp;
+
+        // Verifica si algún jugador ha llegado a 0 de vida
+        if (champion1.hp <= 0) {
+          showVictoryPopup("Luishiño");
+          console.log("Luishiño ha ganado");
+
+          // Mostrar la alerta
+          alert("¡Vaya, Luishiño! 🏆, Te mereces algo más que solo esta victoria 😘🔥");
+
+          // Activar confetti
+          const confettiOptions = {
+            particleCount: 150,
+            spread: 80,
+            origin: { y: 0.6 }
+          };
+          confetti(confettiOptions);
+          confetti(confettiOptions);
+          setTimeout(() => window.location.href = 'index.html', 10000);
+          // Pausar y reiniciar el juego
+          pauseGame();
+          resumeGame();
+          resetGame();
+
+        } else if (champion2.hp <= 0) {
+          showVictoryPopup("Nadia");
+          resumeGame();
+        }
+      }
+
+      function resetGame() {
+        // Reinicia la vida de ambos jugadores a sus valores iniciales
+        champion1.hp = champion1.maxHp;
+        champion2.hp = champion2.maxHp;
+
+        // Puedes también reiniciar las posiciones de los personajes
+        champion1.x = 100;
+        champion1.y = 200;
+        champion2.x = 600;
+        champion2.y = 200;
+
+        // Aquí también puedes agregar cualquier otro dato que necesites reiniciar (por ejemplo, el tiempo entre ataques)
+        champion1.lastAttackTime = 0;
+        champion2.lastAttackTime = 0;
+
+        // Redibuja el canvas después de reiniciar el juego
+        draw();
+      }
+
+      function showPopup(powerName, imageSrc, attacker) {
+        const powerPopup = document.getElementById("attackPopup");
+        const powerText = document.getElementById("powerUsedText");
+        const powerImage = document.getElementById("powerImage");
+
+        // Posiciona el popup encima del personaje
+        powerPopup.classList.remove("hidden");
+
+        // Ajustar posición para no sobrepasar los límites de la pantalla
+        let left = attacker.x + (attacker.width / 2) - 50;
+        let top = attacker.y - 60;
+
+        // Evitar que el popup se salga de los límites de la pantalla
+        const maxLeft = window.innerWidth - powerPopup.offsetWidth - 10; // margen de 10px
+        const maxTop = window.innerHeight - powerPopup.offsetHeight - 10; // margen de 10px
+
+        if (left < 0) left = 10;
+        if (left > maxLeft) left = maxLeft;
+        if (top < 0) top = 10;
+        if (top > maxTop) top = maxTop;
+
+        powerPopup.style.left = `${left}px`;
+        powerPopup.style.top = `${top}px`;
+
+        powerText.textContent = `${powerName} lanzado!`;
+        powerImage.src = imageSrc;
+
+        setTimeout(() => {
+          powerPopup.classList.add("hidden");
+        }, 2000);
+      }
+
+      function createOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 opacity-0';
+        return overlay;
+      }
+
+      function createVictoryPopup(winner) {
+        // Crear el contenedor del popup de victoria
+        const victoryPopup = document.createElement('div');
+        victoryPopup.className = 'bg-gray-900 text-white p-6 rounded-lg shadow-lg w-96 text-center relative scale-75 opacity-0';
+
+        // Inicializar variables
+        let victoryMessage = '';
+        const confettiOptions = {
+          particleCount: 150,
+          spread: 80,
+          origin: { y: 0.6 }
+        };
+
+        // Comprobar quién ha ganado y crear el mensaje correspondiente
+        if (winner === "Nadia") {
+          victoryMessage = `
+            <h2 class="text-2xl font-bold">¡Felicidades, Nadia! ❤️</h2>
+            <img src="logo.png" alt="Victory" class="w-24 h-24 mx-auto mt-4 animate-pulse">
+            <p class="text-gray-300 mt-2">¡Esto no acaba aquí! ¿Una recompensa? 🤔🎁</p>
+        `;
+          // Activar confetti y redirigir después de 10 segundos
+          confetti(confettiOptions);
+          setTimeout(() => window.location.href = 'index.html', 10000);
+        } else if (winner === "Luishino") {
+          console.log("Luishiño ha ganado");
+          victoryMessage = `
+            <h2 class="text-2xl font-bold">¡Vaya, Luishiño! 🏆</h2>
+            <img src="logo.png" alt="Victory" class="w-24 h-24 mx-auto mt-4 animate-bounce">
+            <p class="text-gray-300 mt-2">Te mereces algo más que solo esta victoria 😘🔥</p>
+        `;
+          // Continuar con el juego (suponiendo que la función resumeGame() esté definida)
+          resumeGame();
+        }
+
+        // Insertar el botón de cerrar y el mensaje de victoria
+        victoryPopup.innerHTML = `
+        <button 
+            class="absolute top-2 right-2 text-white text-lg bg-transparent border-none cursor-pointer" 
+            onclick="closeVictoryPopup()" 
+            aria-label="Cerrar popup de victoria">
+            x
+        </button>
+        ${victoryMessage}
+    `;
+
+        // Retornar el popup de victoria
+        return victoryPopup;
+      }
+
+
+      function showVictoryPopup(winner) {
+        console.log(`%c[FIN DEL JUEGO] %c${winner} ha ganado`, "color: red; font-weight: bold;", "color: red;");
+
+        // Crear el overlay y el popup
+        const overlay = createOverlay();
+        const victoryPopup = createVictoryPopup(winner);
+
+        // Verificación del mensaje
+        console.log(victoryPopup.innerHTML); // Verifica si el mensaje se genera correctamente
+
+        // Agregar el popup al overlay
+        overlay.appendChild(victoryPopup);
+
+        // Agregar al body
+        document.body.appendChild(overlay);
+
+        // Sonido de victoria
+        victorySound.play();
+
+        // Animación de entrada
+        gsap.to(overlay, { opacity: 1, duration: 0.5 });
+        gsap.to(victoryPopup, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" });
+      }
+
+
+      function closeVictoryPopup() {
+        const overlay = document.querySelector('.fixed.inset-0.bg-black');
+        if (overlay) {
+          // Animación para cerrar el popup
+          gsap.to(overlay, {
+            opacity: 0,
+            duration: 0.1,
+            onComplete: () => {
+              // Elimina el overlay después de la animación
+              overlay.remove();
+              // Reanudar el juego después de cerrar el popup
+              if (typeof pauseGame === 'function') {
+                pauseGame();
+              }
+            }
+          });
+        }
+      }
+
+
+      function pauseGame() {
+        gamePaused = true;
+        console.log('Juego pausado');
+      }
+
+
+
+      function resumeGame() {
+        let gamePaused = false;  // Estado inicial del juego no está pausado
+        console.log("Reanudando el juego...");
+        // Lógica para reanudar el juego
+        gamePaused;
+        console.log("Juego reanudado");
+        // Reanudar animaciones o intervalos si es necesario
+        startGameLoop();  // Esto es solo un ejemplo, según tu lógica
+      }
+
+
+      // Dibuja a los jugadores y sus barras de vida
+      function draw() {
+        if (!ctx || !champion1 || !champion2) return; // Evita errores si faltan elementos
+
+        // Limpia el canvas antes de redibujar
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Dibuja a los campeones si sus imágenes están cargadas
+        if (champion1.image.complete) {
+          ctx.drawImage(champion1.image, champion1.x, champion1.y, champion1.width, champion1.height);
+        }
+        if (champion2.image.complete) {
+          ctx.drawImage(champion2.image, champion2.x, champion2.y, champion2.width, champion2.height);
+        }
+
+        // Dibuja las barras de vida
+        drawHealthBar(champion1);
+        drawHealthBar(champion2);
+      }
+
+      // Dibuja la barra de vida del jugador
+      function drawHealthBar(player) {
+        if (!player || player.hp === undefined || player.maxHp === undefined) return;
+
+        const barWidth = 50; // Ancho de la barra de vida
+        const barHeight = 5;  // Alto de la barra
+        const healthRatio = Math.max(player.hp / player.maxHp, 0); // Evita valores negativos
+
+        ctx.fillStyle = "red";
+        ctx.fillRect(player.x, player.y - 10, healthRatio * barWidth, barHeight);
+      }
+
+      // Bucle del juego
+      // Variables globales para controlar el tiempo
+      let lastTime = 0;  // Tiempo del último cuadro
+      const fps = 60;    // FPS deseado
+      const frameTime = 1000 / fps; // Tiempo por cuadro en milisegundos
+
+      function gameLoop(timestamp) {
+        const deltaTime = timestamp - lastTime;  // Calcular el tiempo transcurrido desde el último cuadro
+
+        if (deltaTime >= frameTime) {
+          update(deltaTime); // Actualiza la lógica del juego, pasando el deltaTime para una lógica más precisa
+          draw();             // Renderiza el juego
+
+          lastTime = timestamp - (deltaTime % frameTime); // Ajuste para que la sincronización no se desplace
+        }
+
+        requestAnimationFrame(gameLoop); // Solicitar el siguiente cuadro
+      }
+
+      // Inicia el bucle del juego
+      requestAnimationFrame(gameLoop);
+
+
+      // Cierra el popup de manera segura
+      function closePopup() {
+        const popup = document.getElementById("popup");
+
+        if (popup) {
+          // Agregar una animación de cierre
+          popup.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+          popup.style.opacity = "0";  // Disminuir la opacidad
+          popup.style.transform = "scale(0.95)";  // Reducir el tamaño para dar el efecto de cierre
+
+          // Esperar a que termine la animación antes de ocultarlo
+          setTimeout(() => {
+            popup.style.display = "none";  // Ocultar el popup después de la animación
+          }, 300);  // Espera el tiempo de la animación
+        }
+      }
+
+      // Función para manejar el movimiento
+      function moveChampion(direction) {
+        switch (direction) {
+          case 'up':
+            if (champion1.y > 0) champion1.y -= champion1.speed;
+            break;
+          case 'down':
+            if (champion1.y < canvasHeight - champion1.height) champion1.y += champion1.speed;
+            break;
+          case 'left':
+            if (champion1.x > 0) champion1.x -= champion1.speed;
+            break;
+          case 'right':
+            if (champion1.x < canvasWidth - champion1.width) champion1.x += champion1.speed;
+            break;
+        }
+      }
+
+      // Asignar eventos de movimiento
+      const moveButtons = {
+        moveUp: 'up',
+        moveDown: 'down',
+        moveLeft: 'left',
+        moveRight: 'right',
+      };
+
+      for (const [buttonId, direction] of Object.entries(moveButtons)) {
+        document.getElementById(buttonId).addEventListener('click', () => moveChampion(direction));
+      }
+
+      // Función para manejar los ataques
+      // Función para manejar los ataques
+      function handleAttack(isSpecial = false) {
+        if (isSpecial) {
+          console.log("%cAtaque Especial Ejecutado", "color: purple; font-weight: bold;");
+          specialAttack(champion1, champion2);
+        } else {
+          console.log("%cAtaque Normal Ejecutado", "color: blue; font-weight: bold;");
+          attack(champion1, champion2);
+        }
+      }
+
+      // Asignar eventos de ataque
+      document.getElementById("attack").addEventListener("click", () => {
+        console.log("%c[Evento] Se hizo clic en el botón de Ataque Normal", "color: green;");
+        handleAttack();
+      });
+
+      document.getElementById("specialAttack").addEventListener("click", () => {
+        console.log("%c[Evento] Se hizo clic en el botón de Ataque Especial", "color: green;");
+        handleAttack(true);
+      });
+
+      // Definición de la función specialAttack
+      function specialAttack(attacker, defender) {
+        console.log(`${attacker.name} realiza un ataque especial contra ${defender.name}`);
+        // Lógica para realizar el ataque especial...
+      }
+
+      // Asignar eventos de ataque
+      // Función para manejar los ataques
+      function handleAttack(isSpecial = false) {
+        if (isSpecial) {
+          // Verifica si la función specialAttack existe antes de llamarla
+          if (typeof specialAttack === 'function') {
+            specialAttack(champion1, champion2);  // Asegúrate de que champion1 y champion2 estén definidos correctamente
+          } else {
+            console.error('specialAttack no está definida.');
+          }
+        } else {
+          if (typeof attack === 'function') {
+            attack(champion1, champion2);  // Similar para el ataque normal
+          } else {
+            console.error('attack no está definida.');
+          }
+        }
+      }
+
+      // Asignar eventos de ataque de forma segura
+      const attackButton = document.getElementById("attack");
+      if (attackButton) {
+        attackButton.addEventListener("click", () => handleAttack(false));  // false para el ataque normal
+      } else {
+        console.error('Botón de ataque no encontrado.');
+      }
+
+      const specialAttackButton = document.getElementById("specialAttack");
+      if (specialAttackButton) {
+        specialAttackButton.addEventListener("click", () => handleAttack(true));  // true para el ataque especial
+      } else {
+        console.error('Botón de ataque especial no encontrado.');
+      }
+
+    });
+  </script>
+</body>
+
+</html>

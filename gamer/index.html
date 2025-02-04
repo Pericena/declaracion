@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selección de Campeón - Aniversario</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: url('fondo.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-family: 'Press Start 2P', cursive;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    .button-active {
+      animation: pulse 1s ease infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .champion-img {
+      width: 100%;
+      height: 20px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #ff6347;
+      transition: transform 0.2s ease;
+    }
+
+    .champion-card {
+      width: 300px;
+      padding: 5px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      transform: scale(1);
+    }
+
+    .champion-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+      border: 2px solid #4d0f04;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ff6347;
+      text-transform: uppercase;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .message {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ff6347;
+      margin-top: 20px;
+      text-transform: uppercase;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #f44336;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .back-button:hover {
+      background-color: #d32f2f;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    }
+
+    .logo {
+      width: 150px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .star {
+      font-size: 2rem;
+      color: gray;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .star.filled {
+      color: gold;
+    }
+
+    .search-bar {
+      margin: 20px;
+      padding: 12px;
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: 10px;
+      color: black;
+      font-size: 1.1rem;
+      border: 2px solid #ff6347;
+      width: 250px;
+    }
+
+    .search-bar::placeholder {
+      color: #ff6347;
+      font-style: italic;
+    }
+
+    .power-img {
+      width: 35px;
+      height: 35px;
+      object-fit: cover;
+      margin-right: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .power-img:hover {
+      transform: rotate(15deg) scale(1.1);
+    }
+
+    .title-banner {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ff6347;
+      margin: 30px 0;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body>
+<div class="py-6 text-center bg-gray-900 from-gray-800 via-gray-700 to-gray-900 rounded-lg shadow-xl">
+  <!-- Logo animado -->
+  <img src="logo.png" alt="MLBB-Go!" class="logo scale-up mx-auto mb-4 w-32 md:w-50">
+
+  <!-- Título con estilo épico -->
+  <h1 class="text-4xl font-extrabold text-gradient bg-clip-text animate__animated animate__pulse text-white">¡Feliz
+    Aniversario, guerreros! 🎉</h1>
+
+  <!-- Mensaje personalizado -->
+  <p class="message text-xl text-gray-300 mt-4 italic">Hoy celebramos un mes de victorias juntos. ¡Nosotros somos
+    imparables! 💖</p>
+
+  <!-- Mensaje extra para un toque especial -->
+  <p class="text-lg mt-6 text-white font-semibold">Si pierdes, recuerda que me debes un deseo. ¡Haz que valga la pena!
+    ⚔️</p>
+</div>
+
+<!-- Banner para seleccionar campeón -->
+<h2 class="title-banner text-3xl font-bold text-gray-100 text-shadow-lg mt-8 text-center uppercase tracking-wide">
+  ¡Selecciona a tu campeón!</h2>
+
+<!-- Botones de acción o selección -->
+
+
+
+
+<!-- Buscador -->
+<input
+  class="search-bar bg-gray-700 text-gray-300 border border-gray-600 rounded-lg py-2 px-4 mt-4 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-400 placeholder-gray-500 transition duration-300"
+  type="text" id="search" placeholder="¿Listo para elegir a tu campeón?" onkeyup="searchChampion()">
+
+
+<!-- Contenedor para los héroes -->
+<div id="champion-list" class="flex justify-center flex-wrap gap-6 p-6 bg-gray-900 rounded-lg">
+  <!-- Puedes añadir más tarjetas de héroes aquí -->
+</div>
+
+  <!-- Botón de retroceso -->
+  <button class="back-button" onclick="window.location.href = 'index.html';">
+    << Volver al menú principal << </button>
+
+      <!-- Música de fondo -->
+      <audio id="bgMusic" autoplay loop>
+        <source src="music_background-music.mp3" type="audio/mp3">
+      </audio>
+
+      <!-- Sonidos de héroes -->
+      <audio id="vexanaSound">
+        <source src="music_pick-names_vexana.mp3" type="audio/mp3">
+      </audio>
+
+      <audio id="brunoSound">
+        <source src="music_hero-voices_atlasvoice.mp3" type="audio/mp3">
+      </audio>
+
+      <audio id="claudeSound">
+        <source src="music_pick-names_vexana.mp3" type="audio/mp3">
+      </audio>
+
+      <audio id="clintSound">
+        <source src="music_pick-names_vexana.mp3" type="audio/mp3">
+      </audio>
+
+      <script>
+        const champions = [
+          { name: "Nadia❤️", role: "Mordelona", image: "heroe/avatar-nadia.jpg", hp: 1000, damage: 80, armor: 30, sound: "vexanaSound", powers: ["poder/true.gif", "poder/agua.gif"], rating: 5 },
+          { name: "Luishiño 😎", role: "Pervertido", image: "heroe/avatar-luishiño.jpg", hp: 1500, damage: 60, armor: 50, sound: "brunoSound", powers: ["poder/true.gif", "poder/agua.gif"], rating: 4 },
+          { name: "Vexana", role: "Mago", image: "heroe1.png", hp: 47, damage: 126, armor: 17, magicResistance: 10, attackSpeed: 0.891, sound: "clintSound", powers: ["poder/agua.gif"], rating: 3 }
+        ];
+
+        const championList = document.getElementById("champion-list");
+
+        champions.forEach(champ => {
+          const champCard = document.createElement("div");
+          champCard.classList.add("champion-card", "hover:scale-105", "transition-transform");
+
+          let powerImgs = champ.powers.map(power => `<img src="${power}" class="power-img" alt="Power">`).join('');
+          let stars = '';
+          for (let i = 1; i <= 5; i++) {
+            stars += `<span class="star ${i <= champ.rating ? 'filled' : ''}">★</span>`;
+          }
+
+          champCard.innerHTML = `
+    <!-- Imagen del héroe -->
+    <img src="${champ.image}" alt="${champ.name}" class="w-full h-50 object-cover">
+    
+    <!-- Detalles del héroe -->
+    <div class="p-4">
+      <h3 class="text-xl font-bold text-center">${champ.name}</h3>
+      <p class="text-gray-300 mt-2 text-center">Rol: ${champ.role}</p>
+      <p class="text-gray-300 text-center">Vida: ${champ.hp}</p>
+      <p class="text-gray-300 text-center">Daño: ${champ.damage}</p>
+      <p class="text-gray-300 text-center">Armadura: ${champ.armor || 'N/A'}</p>
+
+      ${champ.magicResistance !== undefined ? `<p class="text-gray-300 text-center">Resistencia mágica: ${champ.magicResistance}</p>` : ''}
+      ${champ.attackSpeed !== undefined ? `<p class="text-gray-300 text-center">Velocidad de ataque: ${champ.attackSpeed}</p>` : ''}
+
+      <!-- Poderes del héroe -->
+      <div class="flex items-center mt-2">
+        ${powerImgs}
+      </div>
+      
+      <!-- Estrellas de clasificación -->
+      <div class="stars mt-2 text-center">
+        ${stars}
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="flex justify-between mt-4 text-center">
+        <button class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition duration-300 w-full mb-2">Seleccionar</button>
+      </div>
+    </div>
+      `;
+
+          champCard.onclick = () => selectChampion(champ, champCard);
+          championList.appendChild(champCard);
+        });
+
+        function selectChampion(champ, card) {
+          const sound = document.getElementById(champ.sound);
+          sound.play();
+          localStorage.setItem("selectedChampion", JSON.stringify(champ));
+          card.classList.add("button-active");
+
+          setTimeout(() => {
+            window.location.href = "juego.html";
+          }, 1000);
+        }
+
+        function searchChampion() {
+          const query = document.getElementById("search").value.toLowerCase();
+          const filteredChampions = champions.filter(champ => champ.name.toLowerCase().includes(query));
+
+          championList.innerHTML = '';
+          filteredChampions.forEach(champ => {
+            const champCard = document.createElement("div");
+            champCard.classList.add("champion-card", "hover:scale-105", "transition-transform");
+
+            let powerImgs = champ.powers.map(power => `<img src="${power}" class="power-img" alt="Power">`).join('');
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+              stars += `<span class="star ${i <= champ.rating ? 'filled' : ''}">★</span>`;
+            }
+
+            champCard.innerHTML = `
+          <img src="${champ.image}" class="champion-img">
+          <h3 class="text-xl font-bold mt-2">${champ.name}</h3>
+          <p class="text-gray-300">Rol: ${champ.role}</p>
+          <p class="text-gray-300">Vida: ${champ.hp}</p>
+          <p class="text-gray-300">Daño: ${champ.damage}</p>
+          <p class="text-gray-300">Armadura: ${champ.armor || 'N/A'}</p>
+          ${champ.magicResistance !== undefined ? `<p class="text-gray-300">Resistencia mágica: ${champ.magicResistance}</p>` : ''}
+          ${champ.attackSpeed !== undefined ? `<p class="text-gray-300">Velocidad de ataque: ${champ.attackSpeed}</p>` : ''}
+          <div class="flex items-center mt-2">${powerImgs}</div>
+          <div class="stars">${stars}</div>
+        `;
+
+            champCard.onclick = () => selectChampion(champ, champCard);
+            championList.appendChild(champCard);
+          });
+        }
+      </script>
+</body>
+
+</html>
