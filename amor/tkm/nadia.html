@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Aniversario! 🐱‍💻💖</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            padding: 50px;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        #siBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+
+        #noBtn:hover {
+            transform: scale(1.1);
+        }
+
+        #mensaje {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>¡Feliz Aniversario, Mi Amor!  🐱‍💻 💖</h1>
+    <p>¿Aceptas seguir aguantándome otro mes más?🤔😜</p>
+    <button id="siBtn">¡SÍ! Obvio!! 🎉</button>
+    <button id="noBtn">No, mejor me quedamos aqui 💔</button>
+    <p id="mensaje"></p>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const siBtn = document.getElementById('siBtn');
+        const mensaje = document.getElementById('mensaje');
+
+        // Mover el botón "No" aleatoriamente
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+
+        // Acción al hacer clic en "Sí"
+        siBtn.addEventListener('click', () => {
+            mensaje.innerHTML = "¡Sabía que dirías que sí! 🥂<br>Te quiero más que a los carbohidratos (pero menos que al queso y la carne) 🥩🍖🧀❤️";
+        });
+
+        // Acción al hacer clic en "No" (aunque sea difícil)
+        noBtn.addEventListener('click', () => {
+            mensaje.innerHTML = "¡Ja! Sabía que no podrías resistirte. 💘<br>¡Feliz aniversario, Que mal servicio! 😂";
+        });
+    </script>
+</body>
+
+</html>
